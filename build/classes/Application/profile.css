@@ -1,0 +1,108 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 27 Jan 2024, 12:33:16 pm
+    Author     : User
+*/
+
+.text-field:disabled, .text-area:disabled {
+    -fx-opacity: 1.0; 
+}
+
+.date-picker:disabled {
+    -fx-opacity: 1.0; 
+}
+
+.radio-button:disabled {
+    -fx-opacity: 1.0; 
+}
+
+#RBtn_male .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #F5F5F5;
+    -fx-background-color: #F2F2F2;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-border-width: 0.5px;
+    -fx-padding: 3px;
+}
+
+#RBtn_male .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 8px;
+}
+
+.date-picker {
+    -fx-background-radius: 20;
+    -fx-background-color: #F2F2F2;
+}
+.date-picker > .text-field {
+    -fx-background-radius: 20 0 0 20;
+    -fx-background-color: #F2F2F2;
+    -fx-font: 16px "Century Gothic";
+}
+
+.date-picker > .arrow-button {
+    -fx-background-radius: 0 20 20 0;
+    -fx-background-color: #F2F2F2;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-base: #000000 ;
+    -fx-mark-highlight-color: white ;
+}
+
+.text-area {
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 20;
+    -fx-max-height: 200; 
+    -fx-wrap-text: true;
+ }
+ 
+ .text-area .scroll-pane{
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 20;
+    -fx-hbar-policy:never;
+ }
+ 
+ .text-area .scroll-pane .viewport{
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 20;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 20;
+}
+
+#Btn_edit {
+    -fx-background-color: #343541;
+    -fx-background-image: url("/resources/edit.png");
+    -fx-background-size: 20px 20px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 38px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 22 0 0 ;
+}
+
+#Btn_save {
+    -fx-background-color: #343541;
+    -fx-background-image: url("/resources/save.png");
+    -fx-background-size: 20px 20px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 34px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 24 0 0 ;
+}
+
+#Btn_cancel {
+    -fx-background-color: #62647A;
+    -fx-background-image: url("/resources/cancel.png");
+    -fx-background-size: 22px 22px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 23px center; 
+    -fx-background-radius: 20;
+    -fx-padding: 0 24 0 0 ;
+}
+

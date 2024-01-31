@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.profileController">
+   <children>
+      <TextField fx:id="firstNameField" disable="true" layoutX="56.0" layoutY="77.0" prefHeight="40.0" prefWidth="370.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20;" stylesheets="@profile.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="56.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="lastNameField" disable="true" layoutX="621.0" layoutY="77.0" prefHeight="40.0" prefWidth="370.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20;" stylesheets="@profile.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="621.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="emailField" disable="true" layoutX="56.0" layoutY="177.0" prefHeight="40.0" prefWidth="932.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20;" stylesheets="@profile.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="56.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="56.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <RadioButton id="RBtn_male" fx:id="maleButton" disable="true" layoutX="61.0" layoutY="286.0" mnemonicParsing="false" onAction="#maleButtonSelected" stylesheets="@profile.css" text="Male">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton id="RBtn_male" fx:id="femaleButton" disable="true" layoutX="241.0" layoutY="286.0" mnemonicParsing="false" onAction="#femaleButtonSelected" stylesheets="@profile.css" text="Female">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </RadioButton>
+      <RadioButton id="RBtn_male" fx:id="othersButton" disable="true" layoutX="426.0" layoutY="286.0" mnemonicParsing="false" onAction="#othersButtonSelected" stylesheets="@profile.css" text="Others">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </RadioButton>
+      <Text layoutX="620.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Religion">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="religionField" disable="true" layoutX="621.0" layoutY="277.0" prefHeight="40.0" prefWidth="370.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20;" stylesheets="@profile.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="dobDatePicker" disable="true" editable="false" layoutX="56.0" layoutY="377.0" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css" />
+      <Text layoutX="56.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="contactNumberField" disable="true" layoutX="621.0" layoutY="377.0" prefHeight="40.0" prefWidth="370.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20;" stylesheets="@profile.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="621.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="56.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="addressField" disable="true" layoutX="56.0" layoutY="477.0" prefColumnCount="83" prefHeight="200.0" prefWidth="932.0" stylesheets="@profile.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextArea>
+      <Button id="Btn_edit" fx:id="Btn_edit" layoutX="457.0" layoutY="705.0" mnemonicParsing="false" onMousePressed="#editBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Edit" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_save" fx:id="Btn_save" layoutX="360.0" layoutY="705.0" mnemonicParsing="false" onMousePressed="#saveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Save" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_cancel" fx:id="Btn_cancel" layoutX="533.0" layoutY="705.0" mnemonicParsing="false" onMousePressed="#cancelBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Cancel" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
