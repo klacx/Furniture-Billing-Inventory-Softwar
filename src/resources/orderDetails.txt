@@ -1,1 +1,0 @@
-orderdetailsid!orderid!productid!quantity!amount!
