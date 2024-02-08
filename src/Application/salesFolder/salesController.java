@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -85,6 +84,7 @@ public class salesController implements Initializable {
                     profileController.setUsername(username);
                 }
                 case 2 -> {
+                    orderTableController orderTableController = loader.getController();
                 }
                 case 3 -> {
                 }

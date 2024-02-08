@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.salesFolder.orderTableController">
    <children>
       <HBox layoutX="46.0" layoutY="41.0" prefHeight="40.0" prefWidth="343.0">
          <children>
@@ -29,12 +29,19 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <TableView id="table" layoutX="46.0" layoutY="132.0" prefHeight="615.0" prefWidth="959.0" stylesheets="@orderScn.css">
+      <TableView id="table" fx:id="table" layoutX="41.0" layoutY="133.0" prefHeight="615.0" prefWidth="959.0" stylesheets="@orderScn.css">
         <columns>
-          <TableColumn prefWidth="109.0" text="Test" />
-          <TableColumn prefWidth="280.0" text="C2" />
-            <TableColumn prefWidth="280.0" text="C2" />
+          <TableColumn fx:id="orderNumberCol" prefWidth="138.0" text="Order Number" />
+          <TableColumn fx:id="amountCol" prefWidth="129.0" text="Amount" />
+            <TableColumn fx:id="dateCol" prefWidth="111.0" text="Date" />
+            <TableColumn fx:id="statusCol" prefWidth="118.0" text="Status" />
+            <TableColumn fx:id="customerNameCol" prefWidth="165.0" text="Customer Name" />
+            <TableColumn fx:id="contactNumberCol" prefWidth="175.0" text="Contact Number" />
+            <TableColumn fx:id="editCol" prefWidth="122.0" text="Edit" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </Pane>

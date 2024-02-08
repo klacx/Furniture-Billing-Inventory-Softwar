@@ -47,7 +47,6 @@ public class adminController implements Initializable {
         Btn_report.setStyle("-fx-background-color: transparent;");
         
         loadScene("/Application/profile.fxml",1);
-
     }
     
     @FXML
@@ -84,6 +83,7 @@ public class adminController implements Initializable {
                     profileController.setUsername(username);
                 }
                 case 2 -> {
+                    workerScnController workerScnController = loader.getController();
                 }
                 case 3 -> {
                 }

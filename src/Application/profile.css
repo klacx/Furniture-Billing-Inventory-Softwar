@@ -7,8 +7,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : User
 */
 
+.text-field, .text-area{
+    -fx-opacity: 1.0; 
+    -fx-background-color:#F2F2F2;
+    -fx-background-radius:20;
+}
+
 .text-field:disabled, .text-area:disabled {
     -fx-opacity: 1.0; 
+    -fx-background-color:#F2F2F2;
+    -fx-background-radius:20;
+}
+
+.text-field.correct-format,
+.text-area.correct-format {
+    -fx-opacity: 1.0; 
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 20;
+}
+
+.text-field.invalid-format,
+.text-area.invalid-format {
+    -fx-border-color: #FFC0CB; 
+    -fx-border-radius: 20; 
 }
 
 .date-picker:disabled {

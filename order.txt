@@ -1,0 +1,4 @@
+1!100!2024-01-21!Shipped!John Doe!1234567890!1
+2!75!2024-01-22!Processing!Jane Smith!9876543210!2
+3!50!2024-01-23!Delivered!Alice Johnson!5555555555!3
+orderid!totalamount!date!status!customername!customercontact!salesid

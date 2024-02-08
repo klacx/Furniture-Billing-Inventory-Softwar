@@ -5,16 +5,15 @@
 package Application;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -35,6 +34,17 @@ public class profileController {
     private String username;
     private String storedPassword;
     private String storedRole;
+    private String storedFirstName;
+    private String storedLastName;
+    private String storedEmail;
+    private String storedGender;
+    private String storedReligion;
+    private String storedDob;
+    private String storedContactNumber;
+    private String storedAddress;
+    private String selectedGender;
+    
+    ArrayList<Boolean> save = new ArrayList<>();
     
     @FXML
     private TextField firstNameField;
@@ -74,66 +84,76 @@ public class profileController {
     
     @FXML
     private Button Btn_cancel;
+
     
     public void initialize() {
-        
+
     }
     
     public void setUsername(String username) {
         this.username = username;
-        loadUserProfileInfo();
+        loadUserProfileInfo();  
+        validationCheck();
+        Btn_save.setDisable(true);
     }
     
 
     private void loadUserProfileInfo() {
-        try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(getClass().getResourceAsStream("/resources/userCredentials.txt")))) {
+        String currentWorkingDirectory = System.getProperty("user.dir"); // Read directory path 
+        String filePath = currentWorkingDirectory + "/userCredentials.txt"; // Provide absolute path
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {  // Read the file
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] userInfo = line.split("!");
                 String storedUsername = userInfo[0];
-                
+
                 if (username.equals(storedUsername)) {
-                    storedPassword = userInfo[1];
-                    storedRole = userInfo[2];
-                    String firstName = userInfo.length > 3 ? userInfo[3] : "";
-                    String lastName = userInfo.length > 4 ? userInfo[4] : "";
-                    String email = userInfo.length > 5 ? userInfo[5] : "";
-                    String gender = userInfo.length > 6 ? userInfo[6] : "";
-                    String religion = userInfo.length > 7 ? userInfo[7] : "";
-                    String dob = userInfo.length > 8 ? userInfo[8] : "";
-                    String contactNumber = userInfo.length > 9 ? userInfo[9] : "";
-                    String address = userInfo.length > 10 ? userInfo[10] : "";
+                    storedPassword = userInfo.length > 1 ? userInfo[1] : "";
+                    storedRole = userInfo.length > 2 ? userInfo[2] : "";
+                    storedFirstName = userInfo.length > 3 ? userInfo[3] : "";
+                    storedLastName = userInfo.length > 4 ? userInfo[4] : "";
+                    storedEmail = userInfo.length > 5 ? userInfo[5] : "";
+                    storedGender = userInfo.length > 6 ? userInfo[6] : "";
+                    storedReligion = userInfo.length > 7 ? userInfo[7] : "";
+                    storedDob = userInfo.length > 8 ? userInfo[8] : "";
+                    storedContactNumber = userInfo.length > 9 ? userInfo[9] : "";
+                    storedAddress = userInfo.length > 10 ? userInfo[10] : "";
 
-                    firstNameField.setText(firstName.isEmpty() ? "" : firstName);
-                    lastNameField.setText(lastName.isEmpty() ? "" : lastName);
-                    emailField.setText(email.isEmpty() ? "" : email);
+                    firstNameField.setText(storedFirstName.isEmpty() ? "" : storedFirstName);
+                    lastNameField.setText(storedLastName.isEmpty() ? "" : storedLastName);
+                    emailField.setText(storedEmail.isEmpty() ? "" : storedEmail);
 
-                    if (!gender.isEmpty()) {
-                        if ("Male".equals(gender)) {
-                            maleButton.setSelected(true);
-                            femaleButton.setSelected(false);
-                            othersButton.setSelected(false);
-                        } else if ("Female".equals(gender)) {
-                            femaleButton.setSelected(true);
-                            maleButton.setSelected(false);
-                            othersButton.setSelected(false);
-                        } else if ("Others".equals(gender)) {
-                            femaleButton.setSelected(false);
-                            maleButton.setSelected(false);
-                            othersButton.setSelected(true);
+                    if (!storedGender.isEmpty()) {
+                        switch (storedGender) {
+                            case "Male":
+                                maleButton.setSelected(true);
+                                femaleButton.setSelected(false);
+                                othersButton.setSelected(false);
+                                break;
+                            case "Female":
+                                femaleButton.setSelected(true);
+                                maleButton.setSelected(false);
+                                othersButton.setSelected(false);
+                                break;
+                            case "Others":
+                                othersButton.setSelected(true);
+                                maleButton.setSelected(false);
+                                femaleButton.setSelected(false);
+                                break;
+                            default:
+                                
+                                break;
                         }
-                    }
-                    else{
+                    } else {
                         femaleButton.setSelected(false);
                         maleButton.setSelected(false);
                         othersButton.setSelected(false);
                     }
 
-                    religionField.setText(religion.isEmpty() ? "" : religion);
-                    dobDatePicker.setValue(dob.isEmpty() ? null : LocalDate.parse(dob, DateTimeFormatter.ofPattern("MM/dd/yy")));
-                    contactNumberField.setText(contactNumber.isEmpty() ? "" : contactNumber);
-                    addressField.setText(address.isEmpty() ? "" : address);
+                    religionField.setText(storedReligion);
+                    dobDatePicker.setValue(storedDob.isEmpty() ? null : LocalDate.parse(storedDob, DateTimeFormatter.ofPattern("MM/dd/yy")));
+                    contactNumberField.setText(storedContactNumber);
+                    addressField.setText(storedAddress);
 
                     break;
                 }
@@ -212,48 +232,51 @@ public class profileController {
             addressField.setDisable(true);
             saveUserProfileInfo();
         }
+        Btn_save.setDisable(true);
     } 
     
     private void saveUserProfileInfo() {
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filePath = currentWorkingDirectory + "/userCredentials.txt";
         try {
-            Path filePath = Paths.get(getClass().getResource("/resources/userCredentials.txt").toURI());
-            List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+            File file = new File(filePath);
+
+            List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
 
             for (int i = 0; i < lines.size(); i++) {
                 String line = lines.get(i);
                 String[] storedInfo = line.split("!");
                 String storedUsername = storedInfo[0];
-                
-                                
+
                 if (username.equals(storedUsername)) {
                     String[] userInfo = new String[11];
                     userInfo[0] = username;
-                    userInfo[1] = storedPassword;
-                    userInfo[2] = storedRole ;
+                    userInfo[1] = storedInfo[1];  // Retain the existing password
+                    userInfo[2] = storedInfo[2];
                     userInfo[3] = firstNameField.getText().length() > 0 ? firstNameField.getText() : "";
                     userInfo[4] = lastNameField.getText().length() > 0 ? lastNameField.getText() : "";
                     userInfo[5] = emailField.getText().length() > 0 ? emailField.getText() : "";
-                    userInfo[6] = maleButton.isSelected() ? "Male" : (femaleButton.isSelected() ? "Female" : (othersButton.isSelected() ?"Others" : ""));
+                    userInfo[6] = maleButton.isSelected() ? "Male" : (femaleButton.isSelected() ? "Female" : (othersButton.isSelected() ? "Others" : ""));
                     userInfo[7] = religionField.getText().length() > 0 ? religionField.getText() : "";
-                    userInfo[8] = dobDatePicker.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
+                    userInfo[8] = dobDatePicker.getValue() != null ? dobDatePicker.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yy")) : "";
                     userInfo[9] = contactNumberField.getText().length() > 0 ? contactNumberField.getText() : "";
                     userInfo[10] = addressField.getText().length() > 0 ? addressField.getText() : "";
 
-                        // Construct the updated line
+                    // Construct the updated line
                     String updatedLine = String.join("!", userInfo);
 
-                        // Replace the line at index i
+                    // Replace the line at index i
                     lines.set(i, updatedLine);
-                    break;  
+                    break;
                 }
             }
-            Files.write(filePath, lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
-        } 
-        catch (IOException | URISyntaxException e) {
+
+            Files.write(file.toPath(), lines, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     private void maleButtonSelected(){
         femaleButton.setSelected(false);
@@ -270,6 +293,162 @@ public class profileController {
     private void othersButtonSelected(){
         maleButton.setSelected(false);
         femaleButton.setSelected(false);
+    }
+  
+    private void contactNumberValidation() {
+        if (storedContactNumber.equals(contactNumberField.getText().trim())){
+            contactNumberField.getStyleClass().remove("invalid-format");
+            contactNumberField.getStyleClass().add("correct-format");
+        } 
+        else {
+            if (contactNumberField.getText().trim().isEmpty()) {
+                contactNumberField.getStyleClass().remove("invalid-format");
+                contactNumberField.getStyleClass().add("correct-format");
+                save.add(true);
+            }
+            else {
+                String regex = "\\d{1,11}"; 
+
+                if (!contactNumberField.getText().trim().matches(regex)) {
+                    contactNumberField.getStyleClass().remove("correct-format");
+                    contactNumberField.getStyleClass().add("invalid-format");
+                    save.add(false);
+                } else {
+                    contactNumberField.getStyleClass().remove("invalid-format");
+                    contactNumberField.getStyleClass().add("correct-format");
+                    save.add(true);
+                }
+            }
+
+        }
+    }
+    
+    private void emailValidation() {    
+        if (storedEmail.equals(emailField.getText().trim())){
+            emailField.getStyleClass().remove("invalid-format");
+            emailField.getStyleClass().add("correct-format");
+        }
+        else{ 
+   
+            if (emailField.getText().trim().isEmpty()) {
+                emailField.getStyleClass().remove("invalid-format");
+                emailField.getStyleClass().add("correct-format");
+                save.add(true);
+            } 
+            else{
+                String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+                
+                if (!emailField.getText().matches(emailRegex)) {
+                    emailField.getStyleClass().remove("correct-format");
+                    emailField.getStyleClass().add("invalid-format");
+                    save.add(false);
+                } 
+                else {
+                    emailField.getStyleClass().remove("invalid-format");
+                    emailField.getStyleClass().add("correct-format");
+                    save.add(true);
+                }
+            }
+        }
+    }  
+    
+    private void firstNameValidation() {       
+        if (storedFirstName.equals(firstNameField.getText())){
+            firstNameField.getStyleClass().remove("invalid-format");
+            firstNameField.getStyleClass().add("correct-format");
+        }
+        else {
+            if (firstNameField.getText().trim().isEmpty()) {
+                firstNameField.getStyleClass().remove("invalid-format");
+                firstNameField.getStyleClass().add("correct-format");
+                save.add(true);
+            }
+            else{
+                String regex = "^[a-zA-Z]+$";
+                if (!firstNameField.getText().matches(regex)) {           
+                    firstNameField.getStyleClass().remove("correct-format");
+                    firstNameField.getStyleClass().add("invalid-format");
+                    save.add(false);
+                } 
+                else {               
+                    firstNameField.getStyleClass().remove("invalid-format");
+                    firstNameField.getStyleClass().add("correct-format");
+                    save.add(true);
+                }
+            }       
+        }
+
+    }
+    
+    private void lastNameValidation() {
+        if(storedLastName.equals(emailField.getText())){
+            lastNameField.getStyleClass().remove("invalid-format");
+            lastNameField.getStyleClass().add("correct-format");
+        }
+        else{
+            if (lastNameField.getText().trim().isEmpty()) {
+                lastNameField.getStyleClass().remove("invalid-format");
+                lastNameField.getStyleClass().add("correct-format");
+                save.add(true);
+            } 
+            else {
+                String regex = "^[a-zA-Z]+$";
+                if (!lastNameField.getText().matches(regex)) {           
+                    lastNameField.getStyleClass().remove("correct-format");
+                    lastNameField.getStyleClass().add("invalid-format");
+                    save.add(false);
+                } else {               
+                    lastNameField.getStyleClass().remove("invalid-format");
+                    lastNameField.getStyleClass().add("correct-format");
+                    save.add(true);
+                }
+            }
+        }
+    }
+    
+    private void religionValidation() {
+        if (religionField.getText().trim().isEmpty()) {
+            religionField.getStyleClass().remove("invalid-format");
+            religionField.getStyleClass().add("correct-format");
+            save.add(true);
+        } 
+        else {
+            String regex = "^[a-zA-Z]+$";
+            if (!religionField.getText().matches(regex)) {           
+                religionField.getStyleClass().remove("correct-format");
+                religionField.getStyleClass().add("invalid-format");
+                save.add(false);
+            } else {               
+                religionField.getStyleClass().remove("invalid-format");
+                religionField.getStyleClass().add("correct-format");
+                save.add(true);
+            }
+        }
+    }
+    
+    private void genderValidation(){
+        
+    }
+    
+    private void addressChanged(){
+        save.add(true);
+    }
+    
+    @FXML
+    private void validationCheck(){
+        save.clear();
+        firstNameValidation();
+        lastNameValidation();
+        emailValidation();
+        religionValidation();
+        contactNumberValidation();
+        addressChanged();
+        if(save.contains(false)){
+            Btn_save.setDisable(true);
+        }
+        else{
+            Btn_save.setDisable(false);
+        }
     }
 }    
 

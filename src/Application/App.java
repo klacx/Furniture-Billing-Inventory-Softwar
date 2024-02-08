@@ -21,16 +21,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Objects;
 import static javafx.application.Application.launch;
 import javafx.scene.image.Image;
 
 
 public class App extends Application {
+    
     private Scene scene;
-
     private String role;
     private String enteredUsername;
     private String enteredPassword;
@@ -80,7 +80,9 @@ public class App extends Application {
 
 
     private boolean checkCredentials(String enteredUsername, String enteredPassword) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream("/resources/userCredentials.txt"))))) {
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filePath = currentWorkingDirectory + "/userCredentials.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] credentials = line.split("!");

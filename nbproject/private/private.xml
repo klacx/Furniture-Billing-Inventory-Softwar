@@ -5,12 +5,15 @@
         <group>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/salesFolder/salesController.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/adminFolder/adminController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/order.txt</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/adminFolder/workerScnController.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/App.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/build/classes/resources/userCredentials.txt</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/build/classes/resources/report.png</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/salesFolder/orderTableController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/salesFolder/orderInfo.java</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/profile.css</file>
             <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/profileController.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/officerFolder/officerController.java</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/salesFolder/orderScn.fxml</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/OODJ/src/Application/adminFolder/workerInfo.java</file>
         </group>
     </open-files>
 </project-private>
