@@ -4,6 +4,8 @@
  */
 package Application;
 
+import Application.adminFolder.adminController;
+import Application.adminFolder.workerScnController;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -16,6 +18,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,7 +28,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 /**
  *
  * @author User
@@ -43,6 +51,8 @@ public class profileController {
     private String storedContactNumber;
     private String storedAddress;
     private String selectedGender;
+    
+    private Runnable workersButtonAction;
     
     ArrayList<Boolean> save = new ArrayList<>();
     
@@ -83,8 +93,15 @@ public class profileController {
     private Button Btn_save;
     
     @FXML
+    private Button Btn_advanced;
+    
+    @FXML
     private Button Btn_cancel;
-
+    
+    @FXML
+    private Button Btn_back;
+    
+    private workerScnController parentController;
     
     public void initialize() {
 
@@ -166,6 +183,7 @@ public class profileController {
     @FXML
     private void editBtnPressed(MouseEvent event){
         Btn_edit.setVisible(false);
+        Btn_advanced.setVisible(false);
         Btn_save.setVisible(true);
         Btn_cancel.setVisible(true);
         firstNameField.setDisable(false);
@@ -191,6 +209,7 @@ public class profileController {
         
         if (userResponse == ButtonType.YES) {
             Btn_edit.setVisible(true);
+            Btn_advanced.setVisible(true);
             Btn_save.setVisible(false);
             Btn_cancel.setVisible(false);
             firstNameField.setDisable(true);
@@ -449,6 +468,42 @@ public class profileController {
         else{
             Btn_save.setDisable(false);
         }
+    }
+    
+    @FXML
+    private void advancedPressed(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/advanced.fxml"));
+            Parent sceneRoot = loader.load();
+
+            Scene scene = new Scene(sceneRoot);
+
+            Stage stage = new Stage();
+
+            Image icon = new Image("/resources/icon.png");
+            stage.getIcons().add(icon);
+            stage.setTitle("Change Password");
+            stage.setScene(scene);
+            stage.setResizable(false);   
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();               
+        } catch (IOException e) {
+            System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void backBtnPressed(){
+        parentController.callAdminFunction();
+    }    
+    
+    public void setParentController(workerScnController parentController) {
+        this.parentController = parentController;
+    }
+    
+    public void enableBackBtn(){
+        Btn_back.setVisible(true);
     }
 }    
 

@@ -1,0 +1,30 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 8, 2024, 10:50:31 PM
+    Author     : User
+*/
+.text-field {
+    -fx-opacity: 1.0; 
+    -fx-background-color:#F2F2F2;
+    -fx-background-radius:20;
+}
+
+.text-field:disabled {
+    -fx-opacity: 1.0; 
+    -fx-background-color:#F2F2F2;
+    -fx-background-radius:20;
+}
+
+.text-field.correct-format {
+    -fx-opacity: 1.0; 
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 20;
+}
+
+.text-field.invalid-format {
+    -fx-border-color: #FFC0CB; 
+    -fx-border-radius: 20; 
+}

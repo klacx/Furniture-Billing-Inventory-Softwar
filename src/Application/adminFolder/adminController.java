@@ -8,6 +8,7 @@ import Application.profileController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,11 +36,21 @@ public class adminController implements Initializable {
     
     @FXML
     private Pane pane;
-
+   
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    
     }
-
+    
+    @FXML
+    public void workersScn() {
+        Btn_workers.setStyle("-fx-background-color: #000000;");  // Dark Gray
+        Btn_profile.setStyle("-fx-background-color: transparent;");
+        Btn_report.setStyle("-fx-background-color: transparent;");
+        
+        loadScene("/Application/adminFolder/workersScn.fxml", 2);
+    }
+    
     @FXML
     private void profileBtnPressed(MouseEvent event) {
         Btn_profile.setStyle("-fx-background-color: #000000;");  // Dark Gray
@@ -84,6 +95,7 @@ public class adminController implements Initializable {
                 }
                 case 2 -> {
                     workerScnController workerScnController = loader.getController();
+                    workerScnController.setParentController(this);
                 }
                 case 3 -> {
                 }

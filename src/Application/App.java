@@ -47,7 +47,7 @@ public class App extends Application {
             
             Image icon = new Image("/resources/icon.png");
             primaryStage.getIcons().add(icon);
-
+      
             primaryStage.setTitle("Log In");
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);

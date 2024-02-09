@@ -8,33 +8,38 @@ package Application.adminFolder;
  *
  * @author User
  */
+import Application.profileController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
-public class workerScnController{
 
+public class workerScnController{
+    
+    @FXML
+    private Pane pane;
+    
     @FXML
     private Button Btn_new;
 
     @FXML
     private TableColumn<workerInfo, String> contactNumberCol;
-
-    @FXML
-    private TableColumn<workerInfo, String> editCol;
 
     @FXML
     private TableColumn<workerInfo, String> emailCol;
@@ -47,9 +52,14 @@ public class workerScnController{
 
     @FXML
     private TableColumn<workerInfo, String> rolesCol;
+    
+    @FXML
+    private TableColumn<workerInfo, Void> editCol;
 
     @FXML
     private TableView<workerInfo> table;
+    
+    private adminController parentController;
 
     @FXML
     private void initialize() {
@@ -58,34 +68,56 @@ public class workerScnController{
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         emailCol.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         contactNumberCol.setCellValueFactory(cellData -> cellData.getValue().contactNumberProperty());
-
+        editCol.setCellFactory(getButtonCellFactory());
         // Load data from text file and populate table
         populateTable();
     }
 
     private void populateTable() {
-        ObservableList<workerInfo> workers = FXCollections.observableArrayList();
-        String currentWorkingDirectory = System.getProperty("user.dir"); // Read directory path
-        String filePath = currentWorkingDirectory + "/userCredentials.txt"; // Provide absolute path
+    ObservableList<workerInfo> workers = FXCollections.observableArrayList();
+    String currentWorkingDirectory = System.getProperty("user.dir"); // Read directory path
+    String filePath = currentWorkingDirectory + "/userCredentials.txt"; // Provide absolute path
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] values = line.split("!");
+    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] values = line.split("!");
+                       
+            String workerID = "";
+            String password = "";
+            String roles = "";
+            String firstName = "";
+            String lastName = "";
+            String email = "";
+            String gender = "";
+            String religion = "";
+            String dob = "";
+            String contactNumber = "";
 
-                // Create Order object from parsed values
-                workerInfo worker = new workerInfo(values[0], values[2], values[3]+values[4], values[5], values[9]);
-
-                // Add worker to list
+            if (values.length > 0) workerID = values[0];
+            if (values.length > 1) password = values[1];
+            if (values.length > 2) roles = values[2];
+            if (values.length > 3) firstName = values[3];
+            if (values.length > 4) lastName = values[4];
+            if (values.length > 5) email = values[5];
+            if (values.length > 6) gender = values[6];
+            if (values.length > 7) religion = values[7];
+            if (values.length > 8) dob = values[8];
+            if (values.length > 9) contactNumber = values[9];
+            
+            if (!roles.equals("admin")){                
+                workerInfo worker = new workerInfo(workerID, roles, firstName + " " + lastName, email, contactNumber);
                 workers.add(worker);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Add worker to list           
         }
-
-        // Set table items
-        table.setItems(workers);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+
+    // Set table items
+    table.setItems(workers);
+}
     
     private Callback<TableColumn<workerInfo, Void>, TableCell<workerInfo, Void>> getButtonCellFactory() {
         return new Callback<>() {
@@ -100,9 +132,9 @@ public class workerScnController{
                         buttonsContainer.setAlignment(Pos.CENTER); // Align icons in the center
 
                         editIcon.setOnMouseClicked(event -> {
-                            workerInfo rowData = getTableView().getItems().get(getIndex());
-                            // Handle edit action
-                            handleEditAction(rowData);
+                            workerInfo rowData = getTableRow().getItem();
+                            String workerID = rowData.getWorkerID();
+                            handleEditAction(workerID);
                         });
 
                         deleteIcon.setOnMouseClicked(event -> {
@@ -125,9 +157,37 @@ public class workerScnController{
         };
     }
     
-    private void handleEditAction(workerInfo rowData) {
-        // Implement the logic for handling edit action
-        // For example:
-        // System.out.println("Edit action triggered for: " + rowData);
+    private void handleEditAction(String workerID) {
+        loadScene(workerID);
     }
+    
+    private void loadScene(String workerID) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/profile.fxml"));
+            Parent sceneRoot = loader.load();
+            
+            profileController profileController = loader.getController();
+            profileController.setUsername(workerID);
+            profileController.setParentController(this);
+            profileController.enableBackBtn();
+            
+            Node node = pane;
+            Pane parent = (Pane) node.getParent();
+            parent.getChildren().clear();
+            parent.getChildren().add(sceneRoot);
+        } catch (IOException e) {
+            System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void setParentController(adminController parentController) {
+        this.parentController = parentController;
+    }
+    
+    public void callAdminFunction() {
+        if (parentController != null) {
+            parentController.workersScn(); // Call the function from adminController
+        }
+    } 
 }

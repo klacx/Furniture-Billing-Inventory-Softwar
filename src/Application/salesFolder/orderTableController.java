@@ -68,7 +68,7 @@ public class orderTableController {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split("!");
-
+                
                 // Create Order object from parsed values
                 orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5]);
 
@@ -96,9 +96,9 @@ public class orderTableController {
                         buttonsContainer.setAlignment(Pos.CENTER); // Align icons in the center
 
                         editIcon.setOnMouseClicked(event -> {
-                            orderInfo rowData = getTableView().getItems().get(getIndex());
-                            // Handle edit action
-                            handleEditAction(rowData);
+                            orderInfo rowData = getTableRow().getItem();
+                            String orderNumber = rowData.getOrderNumber();
+                            handleEditAction(orderNumber);
                         });
 
                         deleteIcon.setOnMouseClicked(event -> {
@@ -121,10 +121,9 @@ public class orderTableController {
         };
     }
     
-    private void handleEditAction(orderInfo rowData) {
-        // Implement the logic for handling edit action
-        // For example:
-        // System.out.println("Edit action triggered for: " + rowData);
+    private void handleEditAction(String orderNumber) {
+        
+        System.out.println("Edit action triggered for: " + orderNumber);
     }
 }
 

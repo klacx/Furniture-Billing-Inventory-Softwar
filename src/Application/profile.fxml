@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.profileController">
    <children>
-      <TextField fx:id="firstNameField" disable="true" layoutX="56.0" layoutY="77.0" onInputMethodTextChanged="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
+      <TextField fx:id="firstNameField" disable="true" layoutX="57.0" layoutY="67.0" onInputMethodTextChanged="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -21,12 +21,12 @@
             <String fx:value="invalid-format" />
          </styleClass>
       </TextField>
-      <Text layoutX="56.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+      <Text layoutX="57.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="lastNameField" disable="true" layoutX="621.0" layoutY="77.0" onInputMethodTextChanged="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
+      <TextField fx:id="lastNameField" disable="true" layoutX="622.0" layoutY="67.0" onInputMethodTextChanged="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -35,12 +35,12 @@
             <String fx:value="invalid-format" />
          </styleClass>
       </TextField>
-      <Text layoutX="621.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+      <Text layoutX="622.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="emailField" disable="true" layoutX="56.0" layoutY="177.0" onInputMethodTextChanged="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="932.0" stylesheets="@profile.css">
+      <TextField fx:id="emailField" disable="true" layoutX="57.0" layoutY="167.0" onInputMethodTextChanged="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="932.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -49,37 +49,37 @@
             <String fx:value="correct-format" />
          </styleClass>
       </TextField>
-      <Text layoutX="56.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+      <Text layoutX="57.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="56.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+      <Text layoutX="57.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <RadioButton id="RBtn_male" fx:id="maleButton" disable="true" layoutX="61.0" layoutY="286.0" mnemonicParsing="false" onAction="#maleButtonSelected" stylesheets="@profile.css" text="Male">
+      <RadioButton id="RBtn_male" fx:id="maleButton" disable="true" layoutX="62.0" layoutY="276.0" mnemonicParsing="false" onAction="#maleButtonSelected" stylesheets="@profile.css" text="Male">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
       </RadioButton>
-      <RadioButton id="RBtn_male" fx:id="femaleButton" disable="true" layoutX="241.0" layoutY="286.0" mnemonicParsing="false" onAction="#femaleButtonSelected" stylesheets="@profile.css" text="Female">
+      <RadioButton id="RBtn_male" fx:id="femaleButton" disable="true" layoutX="242.0" layoutY="276.0" mnemonicParsing="false" onAction="#femaleButtonSelected" stylesheets="@profile.css" text="Female">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
       </RadioButton>
-      <RadioButton id="RBtn_male" fx:id="othersButton" disable="true" layoutX="426.0" layoutY="286.0" mnemonicParsing="false" onAction="#othersButtonSelected" stylesheets="@profile.css" text="Others">
+      <RadioButton id="RBtn_male" fx:id="othersButton" disable="true" layoutX="427.0" layoutY="276.0" mnemonicParsing="false" onAction="#othersButtonSelected" stylesheets="@profile.css" text="Others">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
       </RadioButton>
-      <Text layoutX="620.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Religion">
+      <Text layoutX="621.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Religion">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="religionField" disable="true" layoutX="621.0" layoutY="277.0" onKeyPressed="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
+      <TextField fx:id="religionField" disable="true" layoutX="622.0" layoutY="267.0" onKeyPressed="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -88,13 +88,13 @@
             <String fx:value="correct-format" />
          </styleClass>
       </TextField>
-      <DatePicker fx:id="dobDatePicker" disable="true" editable="false" layoutX="56.0" layoutY="377.0" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css" />
-      <Text layoutX="56.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
+      <DatePicker fx:id="dobDatePicker" disable="true" editable="false" layoutX="57.0" layoutY="367.0" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css" />
+      <Text layoutX="57.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="contactNumberField" disable="true" layoutX="621.0" layoutY="377.0" onKeyPressed="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
+      <TextField fx:id="contactNumberField" disable="true" layoutX="622.0" layoutY="367.0" onKeyPressed="#validationCheck" onKeyReleased="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -103,32 +103,42 @@
             <String fx:value="correct-format" />
          </styleClass>
       </TextField>
-      <Text layoutX="621.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number">
+      <Text layoutX="622.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="56.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+      <Text layoutX="57.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextArea fx:id="addressField" disable="true" layoutX="56.0" layoutY="477.0" prefColumnCount="83" prefHeight="200.0" prefWidth="932.0" stylesheets="@profile.css">
+      <TextArea fx:id="addressField" disable="true" layoutX="57.0" layoutY="467.0" prefColumnCount="83" prefHeight="200.0" prefWidth="932.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
       </TextArea>
-      <Button id="Btn_edit" fx:id="Btn_edit" layoutX="457.0" layoutY="705.0" mnemonicParsing="false" onMousePressed="#editBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Edit" textFill="WHITE">
+      <Button id="Btn_edit" fx:id="Btn_edit" layoutX="361.0" layoutY="695.0" mnemonicParsing="false" onMousePressed="#editBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Edit" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_save" fx:id="Btn_save" disable="true" layoutX="360.0" layoutY="705.0" mnemonicParsing="false" onMousePressed="#saveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Save" textFill="WHITE" visible="false">
+      <Button id="Btn_save" fx:id="Btn_save" disable="true" layoutX="361.0" layoutY="695.0" mnemonicParsing="false" onMousePressed="#saveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Save" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_cancel" fx:id="Btn_cancel" layoutX="533.0" layoutY="705.0" mnemonicParsing="false" onMousePressed="#cancelBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Cancel" textFill="WHITE" visible="false">
+      <Button id="Btn_cancel" fx:id="Btn_cancel" layoutX="534.0" layoutY="695.0" mnemonicParsing="false" onMousePressed="#cancelBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Cancel" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_advanced" fx:id="Btn_advanced" layoutX="534.0" layoutY="695.0" mnemonicParsing="false" onMousePressed="#advancedPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Advanced" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_back" fx:id="Btn_back" mnemonicParsing="false" onMousePressed="#backBtnPressed" prefHeight="48.0" prefWidth="48.0" styleClass="background-image" stylesheets="@profile.css" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>

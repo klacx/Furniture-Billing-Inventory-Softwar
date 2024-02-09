@@ -97,12 +97,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 20;
 }
 
+#Btn_back {
+    -fx-background-color: transparent;
+    -fx-background-image: url("/resources/back_black.png");
+    -fx-background-size: 44px 44px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center; 
+}
+
 #Btn_edit {
     -fx-background-color: #343541;
     -fx-background-image: url("/resources/edit.png");
     -fx-background-size: 20px 20px; 
     -fx-background-repeat: no-repeat;
     -fx-background-position: right 38px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 22 0 0 ;
+}
+
+#Btn_advanced {
+    -fx-background-color: #62647A;
+    -fx-background-image: url("/resources/advanced.png");
+    -fx-background-size: 20px 20px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 13px center; 
     -fx-background-radius:20;
     -fx-padding: 0 22 0 0 ;
 }
