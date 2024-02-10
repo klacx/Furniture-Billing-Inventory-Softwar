@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 package Application;
-
-import Application.adminFolder.adminController;
+    
 import Application.adminFolder.workerScnController;
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,7 +49,8 @@ public class profileController {
     private String storedDob;
     private String storedContactNumber;
     private String storedAddress;
-    private String selectedGender;
+    private String selectedGender = "";
+    private Boolean adminMode = false;
     
     private Runnable workersButtonAction;
     
@@ -115,7 +115,7 @@ public class profileController {
     }
     
 
-    private void loadUserProfileInfo() {
+    public void loadUserProfileInfo() {
         String currentWorkingDirectory = System.getProperty("user.dir"); // Read directory path 
         String filePath = currentWorkingDirectory + "/userCredentials.txt"; // Provide absolute path
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {  // Read the file
@@ -300,18 +300,24 @@ public class profileController {
     private void maleButtonSelected(){
         femaleButton.setSelected(false);
         othersButton.setSelected(false);
+        selectedGender = "male";
+        validationCheck();
     }
     
     @FXML
     private void femaleButtonSelected(){
         maleButton.setSelected(false);
         othersButton.setSelected(false);
+        selectedGender = "female";
+        validationCheck();
     }
     
     @FXML
     private void othersButtonSelected(){
         maleButton.setSelected(false);
         femaleButton.setSelected(false);
+        selectedGender = "others";
+        validationCheck();
     }
   
     private void contactNumberValidation() {
@@ -446,7 +452,13 @@ public class profileController {
     }
     
     private void genderValidation(){
-        
+        if(!selectedGender.equals(storedGender)){
+            save.add(true);
+        }
+    }
+    
+    private void dobValidation(){
+        save.add(true);
     }
     
     private void addressChanged(){
@@ -461,6 +473,8 @@ public class profileController {
         emailValidation();
         religionValidation();
         contactNumberValidation();
+        genderValidation();
+        dobValidation();
         addressChanged();
         if(save.contains(false)){
             Btn_save.setDisable(true);
@@ -475,11 +489,15 @@ public class profileController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/advanced.fxml"));
             Parent sceneRoot = loader.load();
-
+                 
             Scene scene = new Scene(sceneRoot);
 
             Stage stage = new Stage();
 
+            advancedController advancedController = loader.getController();
+            advancedController.setUp(username, storedPassword, storedRole, adminMode);
+            advancedController.setParentController(this);
+            
             Image icon = new Image("/resources/icon.png");
             stage.getIcons().add(icon);
             stage.setTitle("Change Password");
@@ -502,8 +520,9 @@ public class profileController {
         this.parentController = parentController;
     }
     
-    public void enableBackBtn(){
+    public void adminMode(){
         Btn_back.setVisible(true);
+        adminMode = true;
     }
 }    
 

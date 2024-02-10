@@ -88,7 +88,7 @@
             <String fx:value="correct-format" />
          </styleClass>
       </TextField>
-      <DatePicker fx:id="dobDatePicker" disable="true" editable="false" layoutX="57.0" layoutY="367.0" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css" />
+      <DatePicker fx:id="dobDatePicker" disable="true" editable="false" layoutX="57.0" layoutY="367.0" onAction="#validationCheck" prefHeight="40.0" prefWidth="370.0" stylesheets="@profile.css" />
       <Text layoutX="57.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
@@ -113,7 +113,7 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextArea fx:id="addressField" disable="true" layoutX="57.0" layoutY="467.0" prefColumnCount="83" prefHeight="200.0" prefWidth="932.0" stylesheets="@profile.css">
+      <TextArea fx:id="addressField" disable="true" layoutX="57.0" layoutY="467.0" onKeyReleased="#validationCheck" prefColumnCount="83" prefHeight="200.0" prefWidth="932.0" stylesheets="@profile.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -138,7 +138,7 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_back" fx:id="Btn_back" mnemonicParsing="false" onMousePressed="#backBtnPressed" prefHeight="48.0" prefWidth="48.0" styleClass="background-image" stylesheets="@profile.css" textFill="WHITE" visible="false">
+      <Button id="Btn_back" fx:id="Btn_back" layoutX="995.0" mnemonicParsing="false" onMousePressed="#backBtnPressed" prefHeight="48.0" prefWidth="48.0" styleClass="background-image" stylesheets="@profile.css" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="518.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.adminFolder.addUserController">
+   <children>
+      <Text layoutX="109.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" textAlignment="RIGHT">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="109.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role:" textAlignment="RIGHT">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <Button id="Btn_save" fx:id="Btn_save" disable="true" layoutX="110.0" layoutY="286.0" mnemonicParsing="false" onMousePressed="#saveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_cancel" fx:id="Btn_cancel" layoutX="279.0" layoutY="286.0" mnemonicParsing="false" onMousePressed="#cancelBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@profile.css" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="rolesComboBox" disable="true" layoutX="109.0" layoutY="206.0" prefHeight="40.0" prefWidth="300.0" stylesheets="@profile.css" visibleRowCount="3" />
+      <Text layoutX="109.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" textAlignment="RIGHT">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="usernameField" layoutX="109.0" layoutY="46.0" prefHeight="40.0" prefWidth="300.0" stylesheets="@profile.css" />
+      <TextField fx:id="passwordField" layoutX="109.0" layoutY="126.0" prefHeight="40.0" prefWidth="300.0" stylesheets="@profile.css" />
+   </children>
+</AnchorPane>

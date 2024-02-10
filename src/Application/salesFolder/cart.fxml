@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.salesFolder.cartController">
+   <children>
+      <Button id="Btn_create" fx:id="Btn_add" layoutX="866.0" layoutY="41.0" mnemonicParsing="false" onAction="#addBtnPressed" prefHeight="40.0" prefWidth="134.0" stylesheets="@orderScn.css" text="Add" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <TableView id="table" fx:id="table" layoutX="41.0" layoutY="104.0" prefHeight="568.0" prefWidth="959.0" stylesheets="@orderScn.css">
+        <columns>
+            <TableColumn fx:id="idCol" prefWidth="129.0" text="ID" />
+          <TableColumn fx:id="descriptionCol" prefWidth="433.0" text="Description" />
+          <TableColumn fx:id="unitPriceCol" prefWidth="117.0" text="Unit Price" />
+            <TableColumn fx:id="quantityCol" prefWidth="132.0" text="Quantity" />
+            <TableColumn fx:id="amountCol" prefWidth="134.0" text="Amount" />
+            <TableColumn fx:id="deleteCol" prefWidth="72.0" text="Delete" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TextField fx:id="customerNameField" layoutX="316.0" layoutY="41.0" prefHeight="40.0" prefWidth="245.0" promptText="Customer's Name" stylesheets="@orderScn.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="316.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer's Name:">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="591.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number:">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="customerNumberField" layoutX="591.0" layoutY="41.0" prefHeight="40.0" prefWidth="245.0" promptText="Customer's Contact Number" stylesheets="@orderScn.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Button id="Btn_save" fx:id="Btn_save" disable="true" layoutX="361.0" layoutY="706.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../profile.css" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_cancel" fx:id="Btn_cancel" layoutX="534.0" layoutY="706.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../profile.css" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="orderNumberField" disable="true" layoutX="41.0" layoutY="41.0" prefHeight="40.0" prefWidth="245.0" promptText="Order Number" stylesheets="@orderScn.css">
+         <font>
+            <Font name="Century Gothic" size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="41.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Number:">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

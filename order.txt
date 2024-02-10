@@ -1,4 +1,4 @@
-1!100!2024-01-21!Shipped!John Doe!1234567890!3!approved
-2!75!2024-01-22!Processing!Jane Smith!9876543210!3!unapproved
-3!50!2024-01-23!Delivered!Alice Johnson!5555555555!3!unapproved
-orderid!totalamount!date!status!customername!customercontact!salesid!unapproved
+1!100!2024-01-21!Progressing!John Doe!1234567890!3!approved
+2!75!2024-01-22!Progressing!Jane Smith!9876543210!3!unapproved
+3!50!2024-01-23!Done!Alice Johnson!5555555555!3!unapproved
+

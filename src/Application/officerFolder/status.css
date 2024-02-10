@@ -3,7 +3,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 28 Jan 2024, 8:03:42 am
+    Created on : Feb 10, 2024, 8:43:05 PM
     Author     : User
 */
 
@@ -52,7 +52,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-padding: 0 0 5px 0;
 }
 
-
 .table-view .arrow {
     -fx-mark-color: #FFFFFF ;
 }
@@ -62,71 +61,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-padding: 2 0 2 10px;
 }
 
-.text-field:disabled{
+.combo-box{
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 16px;
     -fx-opacity: 1.0; 
     -fx-background-color:#F2F2F2;
-    -fx-background-radius:20;
+    -fx-background-radius:20;    
 }
-
-.text-field{
-    -fx-opacity: 1.0; 
-    -fx-background-color:#F2F2F2;
-    -fx-background-radius:20;
-}
-
-.text-field.correct-format{
-    -fx-opacity: 1.0; 
-    -fx-background-color: #F2F2F2;
-    -fx-background-radius: 20;
-}
-
-.text-field.invalid-format{
-    -fx-border-color: #FFC0CB; 
-    -fx-border-radius: 20; 
-}
-
-#searchProductField{
-    -fx-background-color: #343541;
-    -fx-border-color: #F2F2F2;
-    -fx-border-width:  0 0 1 0;   
-    -fx-text-fill: #FFFFFF;
-}
-
-#Btn_searchProduct{
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 10;
-    -fx-background-image: url("/resources/search.png");
-    -fx-background-size: 14px 14px; 
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: right 10px center; 
-    -fx-padding: 0 16 0 0 ;
-}
-
-#table_product {
-    -fx-background-color: transparent;
-}
-    
-#table_product .corner {
-    -fx-background-color: transparent;
-}
-
-#table_product .column-header {
-    -fx-background-color: transparent;
-}
-.table-view .column-header .label{
-    -fx-text-fill: #F2F2F2;
-    -fx-font-family: "Century Gothic"; 
-    -fx-font-size: 16px; 
-
-}
-
-#table_product .column-header-background .filler {
-    -fx-background-color: transparent;
-}
-
-#table_product .column-header-background{
-    -fx-background-color: #343541;
-    -fx-padding: 0 0 5px 0;
-}
-
-

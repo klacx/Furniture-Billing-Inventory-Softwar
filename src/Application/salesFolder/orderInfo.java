@@ -14,14 +14,16 @@ public class orderInfo {
     private final StringProperty status;
     private final StringProperty customerName;
     private final StringProperty contactNumber;
+    private final StringProperty approval;
 
-    public orderInfo(String orderNumber, String amount, String date, String status, String customerName, String contactNumber) {
+    public orderInfo(String orderNumber, String amount, String date, String status, String customerName, String contactNumber, String approval) {
         this.orderNumber = new SimpleStringProperty(orderNumber);
         this.amount = new SimpleStringProperty(amount);
         this.date = new SimpleStringProperty(date);
         this.status = new SimpleStringProperty(status);
         this.customerName = new SimpleStringProperty(customerName);
         this.contactNumber = new SimpleStringProperty(contactNumber);
+        this.approval = new SimpleStringProperty(approval);
     }
 
     public StringProperty orderNumberProperty() {
@@ -46,8 +48,12 @@ public class orderInfo {
 
     public StringProperty contactNumberProperty() {
         return contactNumber;
+    }    
+    
+    public StringProperty approvalProperty() {
+        return approval;
     }
-
+    
     public String getOrderNumber() {
         return orderNumber.get();
     }
@@ -70,5 +76,9 @@ public class orderInfo {
 
     public String getContactNumber() {
         return contactNumber.get();
+    }
+    
+    public String getApproval() {
+        return approval.get();
     }
 }

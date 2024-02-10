@@ -41,6 +41,14 @@ public class salesController implements Initializable {
         // Initialization code, if any
     }
 
+    protected void orderScn() {
+        Btn_profile.setStyle("-fx-background-color: transparent;");
+        Btn_order.setStyle("-fx-background-color: #000000;");
+        Btn_history.setStyle("-fx-background-color: transparent;");
+        
+        loadScene("/Application/salesFolder/orderScn.fxml",2);
+    }
+    
     @FXML
     private void profileBtnPressed(MouseEvent event) {
         Btn_profile.setStyle("-fx-background-color: #000000;");  // Dark Gray
@@ -85,8 +93,12 @@ public class salesController implements Initializable {
                 }
                 case 2 -> {
                     orderTableController orderTableController = loader.getController();
+                    orderTableController.setParentController(this);
+                    orderTableController.setUsername(username);               
                 }
                 case 3 -> {
+                    historyController historyController = loader.getController();
+                    historyController.setSalesID(username);
                 }
                 default -> {
                 }

@@ -12,19 +12,19 @@
    <children>
       <HBox layoutX="46.0" layoutY="41.0" prefHeight="40.0" prefWidth="343.0">
          <children>
-            <TextField prefHeight="40.0" prefWidth="297.0" promptText="Search" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20 0 0 20;">
+            <TextField fx:id="searchField" onKeyReleased="#search" prefHeight="40.0" prefWidth="297.0" promptText="Search Worker's ID" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20 0 0 20;">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </TextField>
-            <Button id="Btn_search" mnemonicParsing="false" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 0 20 20 0;" styleClass="background-image" stylesheets="@../salesFolder/orderScn.css">
+            <Button id="Btn_search" mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 0 20 20 0;" styleClass="background-image" stylesheets="@../salesFolder/orderScn.css">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <Button id="Btn_create" fx:id="Btn_new" layoutX="866.0" layoutY="41.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" stylesheets="@../salesFolder/orderScn.css" text="New" textFill="WHITE">
+      <Button id="Btn_create" fx:id="Btn_new" layoutX="866.0" layoutY="41.0" mnemonicParsing="false" onAction="#newBtnPressed" prefHeight="40.0" prefWidth="134.0" stylesheets="@../salesFolder/orderScn.css" text="New" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>

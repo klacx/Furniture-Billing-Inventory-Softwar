@@ -4,6 +4,7 @@
  */
 package Application.salesFolder;
 
+import Application.profileController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,11 +14,19 @@ import javafx.scene.control.TableView;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 public class orderTableController {
@@ -45,7 +54,27 @@ public class orderTableController {
     
     @FXML
     private TableView<orderInfo> table;
-
+    
+    @FXML
+    private Button Btn_create;
+    
+    @FXML
+    private Button Btn_search;
+    
+    @FXML
+    private Pane pane;
+    
+    @FXML
+    private TextField searchField;
+    
+    private salesController parentController;
+    
+    private String username;
+    
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
     @FXML
     private void initialize() {
         orderNumberCol.setCellValueFactory(cellData -> cellData.getValue().orderNumberProperty());
@@ -58,8 +87,9 @@ public class orderTableController {
         // Load data from text file and populate table
         populateTable();
     }
-
-    private void populateTable() {
+    
+    @FXML
+    protected void populateTable() {
         ObservableList<orderInfo> orders = FXCollections.observableArrayList();
         String currentWorkingDirectory = System.getProperty("user.dir"); // Read directory path
         String filePath = currentWorkingDirectory + "/order.txt"; // Provide absolute path
@@ -68,12 +98,17 @@ public class orderTableController {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split("!");
-                
-                // Create Order object from parsed values
-                orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5]);
+                if (values.length >= 6){
+                    // Create Order object from parsed values
+                    orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5], null);
 
-                // Add order to list
-                orders.add(order);
+                    String searchText = searchField.getText();
+                    if (!searchText.isEmpty() && !values[0].contains(searchText)) {
+                        continue; // Skip this worker if it doesn't match the search text
+                    }
+                    // Add order to list
+                    orders.add(order);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,6 +159,42 @@ public class orderTableController {
     private void handleEditAction(String orderNumber) {
         
         System.out.println("Edit action triggered for: " + orderNumber);
+    }
+    
+    @FXML
+    private void createButtonPressed(ActionEvent event){
+        loadCart();
+    }
+    
+    protected void setParentController(salesController parentController) {
+        this.parentController = parentController;
+    }
+    
+    protected void callParentFunction(){
+        if (parentController != null) {
+            parentController.orderScn(); // Call the function from adminController
+        }
+    }
+    
+    private void loadCart() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/salesFolder/cart.fxml"));
+            Parent sceneRoot = loader.load();
+
+            cartController cartController = loader.getController();
+            cartController.setParentController(this);
+            cartController.setUsername(username);
+            cartController.populateTable();
+
+            // Access UI elements after the FXML file is loaded
+            Node node = pane;
+            Pane parent = (Pane) node.getParent();
+            parent.getChildren().clear();
+            parent.getChildren().add(sceneRoot);
+        } catch (IOException e) {
+            System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
 
