@@ -1,0 +1,18 @@
+-d
+C:\\Users\\User\\Documents\\OODJ\\build\\classes
+-classpath
+"C:\\Users\\User\\Documents\\OODJ\\build\\classes;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx-swt.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.base.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.controls.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.fxml.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.graphics.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.media.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.swing.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.web.jar"
+-sourcepath
+C:\\Users\\User\\Documents\\OODJ\\build\\empty
+-target
+21
+-encoding
+UTF-8
+-g
+-processorpath
+"C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx-swt.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.base.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.controls.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.fxml.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.graphics.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.media.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.swing.jar;C:\\Program Files\\Java\\javafx-sdk-21.0.2\\lib\\javafx.web.jar;C:\\Users\\User\\Documents\\OODJ\\build\\empty"
+-s
+C:\\Users\\User\\Documents\\OODJ\\build\\generated-sources\\ap-source-output
+-source
+21
+C:\\Users\\User\\Documents\\OODJ\\src\\Application\\salesFolder\\historyController.java

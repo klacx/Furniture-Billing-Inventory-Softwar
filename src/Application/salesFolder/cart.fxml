@@ -15,7 +15,7 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <TableView id="table" fx:id="table" layoutX="41.0" layoutY="104.0" prefHeight="568.0" prefWidth="959.0" stylesheets="@orderScn.css">
+      <TableView id="table" fx:id="table" layoutX="41.0" layoutY="104.0" prefHeight="541.0" prefWidth="959.0" stylesheets="@orderScn.css">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="129.0" text="ID" />
           <TableColumn fx:id="descriptionCol" prefWidth="433.0" text="Description" />
@@ -28,7 +28,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="customerNameField" layoutX="316.0" layoutY="41.0" prefHeight="40.0" prefWidth="245.0" promptText="Customer's Name" stylesheets="@orderScn.css">
+      <TextField fx:id="customerNameField" layoutX="316.0" layoutY="41.0" onKeyReleased="#updateSaveButton" prefHeight="40.0" prefWidth="245.0" promptText="Customer's Name" stylesheets="@orderScn.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
@@ -43,12 +43,12 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="customerNumberField" layoutX="591.0" layoutY="41.0" prefHeight="40.0" prefWidth="245.0" promptText="Customer's Contact Number" stylesheets="@orderScn.css">
+      <TextField fx:id="customerNumberField" layoutX="591.0" layoutY="41.0" onKeyReleased="#updateSaveButton" prefHeight="40.0" prefWidth="245.0" promptText="Customer's Contact Number" stylesheets="@orderScn.css">
          <font>
             <Font name="Century Gothic" size="16.0" />
          </font>
       </TextField>
-      <Button id="Btn_save" fx:id="Btn_save" disable="true" layoutX="361.0" layoutY="706.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../profile.css" text="Save" textFill="WHITE">
+      <Button id="Btn_save" fx:id="Btn_save" disable="true" layoutX="361.0" layoutY="706.0" mnemonicParsing="false" onAction="#saveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../profile.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
@@ -68,5 +68,19 @@
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Text>
+      <Pane layoutX="41.0" layoutY="645.0" prefHeight="40.0" prefWidth="959.0" style="-fx-background-color: #343541;">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="740.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Amount:">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="totalAmountText" fill="WHITE" fontSmoothingType="LCD" layoutX="847.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RM0.00" textAlignment="RIGHT" wrappingWidth="98.0">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </Pane>

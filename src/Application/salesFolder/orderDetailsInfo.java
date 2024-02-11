@@ -50,7 +50,7 @@ public class orderDetailsInfo  {
         return quantity.get();
     }
 
-    public String getamount() {
+    public String getAmount() {
         return amount.get();
     }
 

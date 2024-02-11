@@ -5,17 +5,23 @@
 package Application.officerFolder;
 
 import Application.salesFolder.orderInfo;
+import Application.shared.viewOrderController;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -54,7 +60,20 @@ public class statusController {
     private Button Btn_search;
     
     @FXML
+    private Pane pane;
+    
+    @FXML
     private ComboBox<String> statusComboBox;
+    
+    private officerController parentController;
+    
+    public void setParentController(officerController parentController) {
+        this.parentController = parentController;
+    }
+    
+    public void callOfficerFunction(){
+        parentController.statusBtnPressed();
+    }
 
     @FXML
     private void initialize() {
@@ -82,7 +101,7 @@ public class statusController {
                 String[] values = line.split("!");
                 if (values.length >= 6){
                     String searchText = searchField.getText();
-                    if (!searchText.isEmpty() && !values[0].contains(searchText)) {
+                    if (!searchText.isEmpty() && !values[0].contains(searchText) && !values[2].contains(searchText) && !values[4].contains(searchText) && !values[5].contains(searchText)) {
                         continue; // Skip this worker if it doesn't match the search text
                     }
                     // Create Order object from parsed value
@@ -103,5 +122,43 @@ public class statusController {
 
         // Set table items
         table.setItems(orders);
+        
+        table.setRowFactory(tv -> {
+            TableRow<orderInfo> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                    orderInfo rowData = row.getItem(); // Corrected to access the item from the row
+                    String orderNumber = rowData.getOrderNumber();
+                    // Handle double-click event here
+                    handleRowDoubleClick(orderNumber);
+                }
+            });
+            return row;
+        });
+    }
+    
+    private void handleRowDoubleClick(String orderNumber) {
+        loadOrder(orderNumber);
+    }
+    
+    private void loadOrder(String orderNumber) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/shared/viewOrder.fxml"));
+            Parent sceneRoot = loader.load();
+
+            viewOrderController viewOrderController = loader.getController();
+            viewOrderController.setStatusAsParentController(this);
+            viewOrderController.setOrderNumber(orderNumber);
+            viewOrderController.populateTable();
+
+            // Access UI elements after the FXML file is loaded
+            Node node = pane;
+            Pane parent = (Pane) node.getParent();
+            parent.getChildren().clear();
+            parent.getChildren().add(sceneRoot);
+        } catch (IOException e) {
+            System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

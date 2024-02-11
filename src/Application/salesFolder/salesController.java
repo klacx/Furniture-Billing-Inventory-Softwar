@@ -50,7 +50,7 @@ public class salesController implements Initializable {
     }
     
     @FXML
-    private void profileBtnPressed(MouseEvent event) {
+    private void profileBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: #000000;");  // Dark Gray
         Btn_order.setStyle("-fx-background-color: transparent;");
         Btn_history.setStyle("-fx-background-color: transparent;");
@@ -59,7 +59,7 @@ public class salesController implements Initializable {
     }
     
     @FXML
-    private void orderBtnPressed(MouseEvent event) {
+    private void orderBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: #000000;");
         Btn_history.setStyle("-fx-background-color: transparent;");
@@ -68,7 +68,7 @@ public class salesController implements Initializable {
     }
     
     @FXML
-    private void historyBtnPressed(MouseEvent event) {
+    protected void historyBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: transparent;");
         Btn_history.setStyle("-fx-background-color: #000000;");
@@ -98,7 +98,8 @@ public class salesController implements Initializable {
                 }
                 case 3 -> {
                     historyController historyController = loader.getController();
-                    historyController.setSalesID(username);
+                    historyController.setParentController(this);
+                    historyController.setSalesID(username);                   
                 }
                 default -> {
                 }

@@ -48,7 +48,7 @@ public class officerController implements Initializable {
     }
 
     @FXML
-    private void profileBtnPressed(MouseEvent event) {
+    private void profileBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: #000000;");  // Dark Gray
         Btn_order.setStyle("-fx-background-color: transparent;");
         Btn_invoice.setStyle("-fx-background-color: transparent;");
@@ -59,7 +59,7 @@ public class officerController implements Initializable {
     }
     
     @FXML
-    private void orderBtnPressed(MouseEvent event) {
+    private void orderBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: #000000;");
         Btn_invoice.setStyle("-fx-background-color: transparent;");
@@ -70,7 +70,7 @@ public class officerController implements Initializable {
     }
     
     @FXML
-    private void invoiceBtnPressed(MouseEvent event) {
+    private void invoiceBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: transparen;");
         Btn_invoice.setStyle("-fx-background-color: #000000;");
@@ -81,7 +81,7 @@ public class officerController implements Initializable {
     }
     
     @FXML
-    private void statusBtnPressed(MouseEvent event) {
+    protected void statusBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: transparent;");
         Btn_invoice.setStyle("-fx-background-color: transparent;");
@@ -92,7 +92,7 @@ public class officerController implements Initializable {
     }
     
     @FXML
-    private void reportBtnPressed(MouseEvent event) {
+    private void reportBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: transparen;");
         Btn_invoice.setStyle("-fx-background-color: transparent;");
@@ -120,6 +120,12 @@ public class officerController implements Initializable {
                 case 2 -> {
                 }
                 case 3 -> {
+                }
+                case 4 -> {
+                    statusController statusController = loader.getController();
+                    statusController.setParentController(this);
+                }
+                case 5 -> {
                 }
                 default -> {
                 }

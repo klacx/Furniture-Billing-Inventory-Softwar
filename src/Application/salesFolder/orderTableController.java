@@ -12,14 +12,21 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -103,7 +110,7 @@ public class orderTableController {
                     orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5], null);
 
                     String searchText = searchField.getText();
-                    if (!searchText.isEmpty() && !values[0].contains(searchText)) {
+                    if (!searchText.isEmpty() && !values[0].contains(searchText)&& !values[4].contains(searchText) && !values[5].contains(searchText) && !values[2].contains(searchText)) {
                         continue; // Skip this worker if it doesn't match the search text
                     }
                     // Add order to list
@@ -137,8 +144,9 @@ public class orderTableController {
                         });
 
                         deleteIcon.setOnMouseClicked(event -> {
-                            orderInfo rowData = getTableView().getItems().get(getIndex());
-                            // Handle delete action
+                            orderInfo rowData = getTableRow().getItem();
+                            String orderNumber = rowData.getOrderNumber();
+                            handleDeleteAction(orderNumber);
                         });
                     }
 
@@ -157,8 +165,22 @@ public class orderTableController {
     }
     
     private void handleEditAction(String orderNumber) {
+        loadOrder(orderNumber);
+    }
+    
+    private void handleDeleteAction(String orderNumber) {
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmation");
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.setContentText("Do you want to delete the order?");
+        confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+        ButtonType userResponse = confirmationAlert.showAndWait().orElse(ButtonType.NO);
         
-        System.out.println("Edit action triggered for: " + orderNumber);
+        if (userResponse == ButtonType.YES) {
+            deleteOrder(orderNumber);
+            deleteOrderDetails(orderNumber);
+            populateTable();
+        }
     }
     
     @FXML
@@ -184,7 +206,7 @@ public class orderTableController {
             cartController cartController = loader.getController();
             cartController.setParentController(this);
             cartController.setUsername(username);
-            cartController.populateTable();
+            cartController.populateCartTable();
 
             // Access UI elements after the FXML file is loaded
             Node node = pane;
@@ -193,6 +215,87 @@ public class orderTableController {
             parent.getChildren().add(sceneRoot);
         } catch (IOException e) {
             System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    private void loadOrder(String orderNumber) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/salesFolder/cart.fxml"));
+            Parent sceneRoot = loader.load();
+
+            cartController cartController = loader.getController();
+            cartController.setParentController(this);
+            cartController.setOrderNumber(orderNumber);
+            cartController.setEditMode();
+            cartController.copyOrderDetailsToTmpCart(orderNumber);
+            cartController.populateOrderDetailsTable();
+
+            // Access UI elements after the FXML file is loaded
+            Node node = pane;
+            Pane parent = (Pane) node.getParent();
+            parent.getChildren().clear();
+            parent.getChildren().add(sceneRoot);
+        } catch (IOException e) {
+            System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    private void deleteOrder(String orderNumber) {                //delete the emtire cart (use after make order)
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filePath = currentWorkingDirectory + "/order.txt";
+        try {
+            File file = new File(filePath);
+            List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+
+            // Create a new list to store the updated lines
+            List<String> updatedLines = new ArrayList<>();
+
+            // Iterate over each line
+            for (String line : lines) {
+                String[] orderInfo = line.split("!");
+                // Check if the line matches the specified  orderNumber
+                if (!(orderInfo[0].equals(orderNumber))) {
+                    // If it doesn't match, add it to the updated lines
+                    updatedLines.add(line);
+                }
+            }
+
+            // Write the updated lines back to the file
+            Files.write(file.toPath(), updatedLines, StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            System.err.println("Error deleting line: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    private void deleteOrderDetails(String orderNumber) {                //delete the emtire cart (use after make order)
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filePath = currentWorkingDirectory + "/orderDetails.txt";
+        try {
+            File file = new File(filePath);
+            List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+
+            // Create a new list to store the updated lines
+            List<String> updatedLines = new ArrayList<>();
+
+            // Iterate over each line
+            for (String line : lines) {
+                String[] orderDetailsInfo = line.split("!");
+                // Check if the line matches the specified orderNumber
+                if (!(orderDetailsInfo[1].equals(orderNumber))) {
+                    // If it doesn't match, add it to the updated lines
+                    updatedLines.add(line);
+                }
+            }
+
+            // Write the updated lines back to the file
+            Files.write(file.toPath(), updatedLines, StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            System.err.println("Error deleting line: " + e.getMessage());
             e.printStackTrace();
         }
     }

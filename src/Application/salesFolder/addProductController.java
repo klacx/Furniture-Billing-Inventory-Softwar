@@ -9,8 +9,10 @@ package Application.salesFolder;
  * @author User
  */
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -64,6 +66,20 @@ public class addProductController {
     private cartController parentController;
     
     private String username;
+    
+    private String orderNumber;
+            
+    protected Boolean edit_mode = false;
+    
+    private int count = 0;
+    
+    protected void setEditMode(){
+        edit_mode=true;
+    }
+    
+    protected void setOrderNumber(String orderNumber){
+        this.orderNumber = orderNumber;
+    }
     
     public void setUsername(String username) {
         this.username = username;
@@ -148,8 +164,14 @@ public class addProductController {
     }
     
     private void handleAddAction(String productID, String unitPrice, String description) {
-        addIntoCart(productID,unitPrice,description);
-        parentController.populateTable();
+        if(!edit_mode){
+            addIntoCart(productID,unitPrice,description);
+            parentController.populateCartTable();
+        }
+        else{
+            addIntoTmpCart(productID,unitPrice,description);
+            parentController.populateOrderDetailsTable();
+        }
     }
     
     
@@ -168,10 +190,10 @@ public class addProductController {
                 if (cartInfo[0].equals(username) && cartInfo[1].equals(productID)) {
                     // Update the quantity and amount
                     int quantity = Integer.parseInt(cartInfo[3]) + 1;
-                    int price = Integer.parseInt(cartInfo[2]);
-                    int amount = quantity * price;
+                    double price = Double.parseDouble(cartInfo[2]);
+                    double amount = quantity * price;
                     // Construct the updated line
-                    String updatedLine = String.join("!", cartInfo[0], cartInfo[1], cartInfo[2], Integer.toString(quantity), Integer.toString(amount), cartInfo[5]);
+                    String updatedLine = String.join("!", cartInfo[0], cartInfo[1], cartInfo[2], Integer.toString(quantity), Double.toString(amount), cartInfo[5]);
                     // Replace the line at index i
                     lines.set(i, updatedLine);
                     Files.write(file.toPath(), lines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
@@ -185,6 +207,101 @@ public class addProductController {
             Files.write(file.toPath(), Collections.singletonList(newLine), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    private void addIntoTmpCart(String productID, String unitPrice, String description) {
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filePath = currentWorkingDirectory + "/tmp_cart.txt";
+
+        File file = new File(filePath);
+
+        try {
+            List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+
+            for (int i = 0; i < lines.size(); i++) {
+                String line = lines.get(i);
+                String[] cartInfo = line.split("!");                
+                // Check if the salesid and product id match with the new variables
+                if (cartInfo[2].equals(productID)) {
+                    // Update the quantity and amount
+                    int quantity = Integer.parseInt(cartInfo[4]) + 1;
+                    double price = Double.parseDouble(cartInfo[3]);
+                    double amount = quantity * price;
+                    // Construct the updated line
+                    String updatedLine = String.join("!", cartInfo[0], orderNumber, cartInfo[2], cartInfo[3], Integer.toString(quantity), Double.toString(amount), cartInfo[6]);
+                    // Replace the line at index i
+                    lines.set(i, updatedLine);
+                    Files.write(file.toPath(), lines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+                    return; // No need to continue searching
+                }
+            }
+
+            // If no similar value was found, add the new line
+            String newLine = String.join("!", String.valueOf(getOrderDetailsId()), orderNumber, productID, unitPrice, "1" , unitPrice ,description);
+            lines.add(newLine);           
+            Files.write(file.toPath(), Collections.singletonList(newLine), StandardCharsets.UTF_8, StandardOpenOption.APPEND);            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private int getOrderDetailsId() {
+        if(count < 1){
+            String currentWorkingDirectory = System.getProperty("user.dir");
+            String filePath = currentWorkingDirectory + "/orderDetails.txt";
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                String lastLine = null;
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    // Skip empty lines
+                    if (!line.trim().isEmpty()) {
+                        lastLine = line;
+                    }
+                }
+
+                if (lastLine != null) {
+                    String[] orderDetailsInfo = lastLine.split("!");
+                    int lastOrderId = Integer.parseInt(orderDetailsInfo[0]);
+                    count += 1;
+                    return lastOrderId + 1;
+                } else {
+                    // If the file is empty, start from order ID 1    
+                    count += 1;
+                    return 1;                  
+                }
+            } catch (IOException | NumberFormatException e) {
+                e.printStackTrace();
+                return -1;
+            }
+        } 
+        else{
+            String currentWorkingDirectory = System.getProperty("user.dir");
+            String filePath = currentWorkingDirectory + "/tmp_cart.txt";
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                String lastLine = null;
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    // Skip empty lines
+                    if (!line.trim().isEmpty()) {
+                        lastLine = line;
+                    }
+                }
+
+                if (lastLine != null) {
+                    String[] orderDetailsInfo = lastLine.split("!");
+                    int lastOrderId = Integer.parseInt(orderDetailsInfo[0]);
+                    return lastOrderId + 1;
+                } else {
+                    // If the file is empty, start from order ID 1
+                    return 1;
+                }
+            } catch (IOException | NumberFormatException e) {
+                e.printStackTrace();
+                return -1;
+            }
         }
     }
 }
