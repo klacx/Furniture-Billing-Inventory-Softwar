@@ -115,7 +115,7 @@ public class addProductController {
                 productInfo product = new productInfo(values[0], values[1], values[2], values[3], values[8]);
                 
                 String searchText = searchField.getText();
-                if (!searchText.isEmpty() && !values[0].contains(searchText)) {
+                if (!searchText.isEmpty() && !values[0].contains(searchText) && !values[1].contains(searchText)) {
                     continue; // Skip this worker if it doesn't match the search text
                 }
                 // Add product to list

@@ -5,6 +5,7 @@
 package Application.adminFolder;
 
 import Application.profileController;
+import Application.shared.reportController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,7 +53,7 @@ public class adminController implements Initializable {
     }
     
     @FXML
-    private void profileBtnPressed(MouseEvent event) {
+    private void profileBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: #000000;");  // Dark Gray
         Btn_workers.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: transparent;");
@@ -61,7 +62,7 @@ public class adminController implements Initializable {
     }
     
     @FXML
-    private void workersBtnPressed(MouseEvent event) {
+    public void workersBtnPressed() {
         Btn_workers.setStyle("-fx-background-color: #000000;");  // Dark Gray
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: transparent;");
@@ -70,12 +71,12 @@ public class adminController implements Initializable {
     }
     
     @FXML
-    private void reportBtnPressed(MouseEvent event) {
+    private void reportBtnPressed() {
         Btn_report.setStyle("-fx-background-color: #000000;");  // Dark Gray
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_workers.setStyle("-fx-background-color: transparent;");
         
-        loadScene("/Application/adminFolder/reportScn.fxml", 3);
+        loadScene("/Application/shared/reportScn.fxml", 3);
     }
     
     public void setUsername(String username) {
@@ -98,6 +99,8 @@ public class adminController implements Initializable {
                     workerScnController.setParentController(this);
                 }
                 case 3 -> {
+                    reportController reportController = loader.getController();
+                    reportController.setMoreBtn();
                 }
                 default -> {
                 }

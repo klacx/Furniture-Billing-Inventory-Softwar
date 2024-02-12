@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.adminFolder.additionalReportController">
+   <children>
+      <HBox layoutX="41.0" layoutY="41.0" prefHeight="40.0" prefWidth="343.0" />
+      <TableView id="table" fx:id="table" layoutX="41.0" layoutY="515.0" prefHeight="235.0" prefWidth="959.0" stylesheets="@additionalReport.css">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="238.0" text="ID" />
+          <TableColumn fx:id="nameCol" prefWidth="448.0" text="Name" />
+            <TableColumn fx:id="ordersMadeCol" prefWidth="259.0" text="Orders Made" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <BarChart fx:id="salesChart" layoutX="41.0" layoutY="14.0" legendVisible="false" prefHeight="489.0" prefWidth="959.0" style="-fx-border-color: #F2F2F2; -fx-border-radius: 20 20 0 0;" styleClass="chart-label" stylesheets="@additionalReport.css" title="Order Made By Every Sales">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</Pane>

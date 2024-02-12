@@ -12,10 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class officerController implements Initializable {
 
@@ -39,6 +42,9 @@ public class officerController implements Initializable {
     @FXML
     private Label lbl_username;
     
+    @FXML
+    private Button Btn_logOut;
+
     @FXML
     private Pane pane;
 
@@ -99,7 +105,7 @@ public class officerController implements Initializable {
         Btn_status.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: #000000;");
 
-        loadScene("/Application/officerFolder/reportScn.fxml", 5);
+        loadScene("/Application/shared/reportScn.fxml", 5);
     }
     
     public void setUsername(String username) {

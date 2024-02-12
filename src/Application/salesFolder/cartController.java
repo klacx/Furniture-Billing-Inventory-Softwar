@@ -174,6 +174,8 @@ public class cartController {
         descriptionCol.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         deleteCol.setCellFactory(getButtonCellFactory());
         orderNumberField.setText(String.valueOf(getOrderId()));
+        allowAlphabetsAndSpaces(customerNameField);
+        allowNumericInput(customerNumberField);
     }
     
     protected void setOrderNumber(String orderNumber){ //use when edit the order
@@ -560,4 +562,20 @@ public class cartController {
             e.printStackTrace();
         }
     }    
+    
+    private void allowAlphabetsAndSpaces(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("^[a-zA-Z\\s]*$")) {
+                textField.setText(oldValue);
+            }
+        });
+    }
+    
+    private void allowNumericInput(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,11}")) {
+                textField.setText(oldValue);
+            }
+        });
+    }
 }

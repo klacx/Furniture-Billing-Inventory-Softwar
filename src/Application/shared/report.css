@@ -1,0 +1,55 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 12, 2024, 6:09:26 PM
+    Author     : User
+*/
+
+.progress-bar {
+    -fx-background-color: #696969; /* Track color */
+    -fx-background-radius: 25px;
+    -fx-background-insets: -0.4px;
+}
+
+.progress-bar .track {
+    -fx-background-color: #FFFFFF; /* Track color */
+    -fx-background-radius: 25px; /* Rounded track corners */
+}
+
+.approvedBar .bar {
+    -fx-background-color: linear-gradient(to right, #f1c40f, #e67e22);  /* Bar color */
+    -fx-background-radius: 25px; /* Rounded bar corners */
+}
+
+.statusBar .bar {
+    -fx-background-color: linear-gradient(to right, #2ecc71, #16a085); 
+    -fx-background-radius: 25px; /* Rounded bar corners */
+}
+
+.progress-bar .border {
+    -fx-border-color: #3498db; /* Border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 25px; /* Rounded border corners */
+}
+
+.chart-label{
+    -fx-font-family: "Century Gothic"; 
+    -fx-font-size: 12px; 
+    -fx-text-fill: black;
+}
+
+#Btn_more {
+    -fx-background-color: transparent;
+    -fx-background-image: url("/resources/next.png");
+    -fx-background-size: 32px 32px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center; 
+}
+
+
+
+
+
+

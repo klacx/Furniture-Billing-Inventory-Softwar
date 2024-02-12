@@ -119,40 +119,40 @@ public class App extends Application {
         alert.showAndWait();
     }
 
-private void loadScene(String sceneName) {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName));
-        Parent sceneRoot = loader.load();
+    private void loadScene(String sceneName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(sceneName));
+            Parent sceneRoot = loader.load();
 
-        // Access the controller
-        if("admin".equals(role)){
-            adminController controller = loader.getController();
-            controller.setUsername(enteredUsername);
+            // Access the controller
+            if("admin".equals(role)){
+                adminController controller = loader.getController();
+                controller.setUsername(enteredUsername);
+            }
+            else if("officer".equals(role)){
+                officerController controller = loader.getController();
+                controller.setUsername(enteredUsername);
+            }
+            else if("sales".equals(role)){
+                salesController controller = loader.getController();
+                controller.setUsername(enteredUsername);
         }
-        else if("officer".equals(role)){
-            officerController controller = loader.getController();
-            controller.setUsername(enteredUsername);
+
+            Scene roleScene = new Scene(sceneRoot);
+            // Create a new stage for the specific scene
+            Stage roleStage = new Stage();
+
+            Image icon = new Image("/resources/icon.png");
+            roleStage.getIcons().add(icon);
+            roleStage.setTitle("Yoyo Furniture");
+            roleStage.setScene(roleScene);
+            roleStage.setResizable(false);
+            roleStage.show();
+        } catch (IOException e) {
+            System.err.println("Error loading scene FXML: " + e.getMessage());
+            e.printStackTrace();
         }
-        else if("sales".equals(role)){
-            salesController controller = loader.getController();
-            controller.setUsername(enteredUsername);
     }
-        
-        Scene roleScene = new Scene(sceneRoot);
-        // Create a new stage for the specific scene
-        Stage roleStage = new Stage();
-        
-        Image icon = new Image("/resources/icon.png");
-        roleStage.getIcons().add(icon);
-        roleStage.setTitle("Yoyo Furniture");
-        roleStage.setScene(roleScene);
-        roleStage.setResizable(false);
-        roleStage.show();
-    } catch (IOException e) {
-        System.err.println("Error loading scene FXML: " + e.getMessage());
-        e.printStackTrace();
-    }
-}
 
     public static void main(String[] args) {
         launch(args);

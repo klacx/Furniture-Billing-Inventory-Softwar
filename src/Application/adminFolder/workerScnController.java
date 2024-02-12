@@ -195,7 +195,7 @@ public class workerScnController{
     
     public void callAdminFunction() {
         if (parentController != null) {
-            parentController.workersScn(); // Call the function from adminController
+            parentController.workersBtnPressed(); // Call the function from adminController
         }
     } 
     

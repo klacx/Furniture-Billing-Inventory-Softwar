@@ -47,7 +47,7 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button id="Btn_report" fx:id="Btn_report" mnemonicParsing="false" onMousePressed="#reportBtnPressed" prefHeight="52.0" prefWidth="232.0" style="-fx-background-color: transparent;" styleClass="background-image" stylesheets="@officer.css" text="Report" textFill="WHITE">
+            <Button id="Btn_report" fx:id="Btn_report" mnemonicParsing="false" onAction="#reportBtnPressed" prefHeight="52.0" prefWidth="232.0" style="-fx-background-color: transparent;" styleClass="background-image" stylesheets="@officer.css" text="Report" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>

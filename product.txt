@@ -1,4 +1,3 @@
-item_id!name!category!price!old_price!sellable_online!link!other_colors!short_description!designer!depth!height!width
 90420332!FREKVENS!Barfurniture!265!Nooldprice!TRUE!https://www.ikea.com/sa/en/p/frekvens-bar-table-in-outdoor-black-90420332/!No!"Bartable,in/outdoor,51x51cm"!NicholaiWiigHansen!99!51
 368814!NORDVIKEN!Barfurniture!995!Nooldprice!FALSE!https://www.ikea.com/sa/en/p/nordviken-bar-table-black-00368814/!No!"Bartable,140x80cm"!FrancisCayouette!105!80
 9333523!NORDVIKEN/NORDVIKEN!Barfurniture!2095!Nooldprice!FALSE!https://www.ikea.com/sa/en/p/nordviken-nordviken-bar-table-and-4-bar-stools-black-black-s09333523/!No!Bartableand4barstools!FrancisCayouette!
