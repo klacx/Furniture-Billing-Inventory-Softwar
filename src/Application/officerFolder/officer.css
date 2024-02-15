@@ -59,3 +59,53 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius:20;
     -fx-padding: 0 25 0 0 ;
 }
+
+#Btn_approve{
+    -fx-background-color: #343541;
+    -fx-background-image: url("/resources/approve_white.png");
+    -fx-background-size: 18px 18px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 22px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 23 0 0 ;
+}
+
+#Btn_back {
+    -fx-background-color: transparent;
+    -fx-background-image: url("/resources/back.png");
+    -fx-background-size: 32px 32px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center; 
+}
+
+#Btn_print{
+    -fx-background-color: #343541;
+    -fx-background-image: url("/resources/print.png");
+    -fx-background-size: 18px 18px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 38px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 20 0 0 ;
+}
+
+#Btn_done{
+    -fx-background-color: #62647A;
+    -fx-background-image: url("/resources/done_white.png");
+    -fx-background-size: 18px 18px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 32px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 20 0 0 ;
+}
+
+#Btn_edit {
+    -fx-background-color: #343541;
+    -fx-background-image: url("/resources/edit.png");
+    -fx-background-size: 20px 20px; 
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 38px center; 
+    -fx-background-radius:20;
+    -fx-padding: 0 22 0 0 ;
+}
+
+

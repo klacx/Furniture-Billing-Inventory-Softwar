@@ -4,7 +4,7 @@
  */
 package Application.adminFolder;
 
-import Application.profileController;
+import Application.shared.profileController;
 import Application.shared.reportController;
 import java.io.IOException;
 import java.net.URL;

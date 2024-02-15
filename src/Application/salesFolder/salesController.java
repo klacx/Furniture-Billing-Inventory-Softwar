@@ -4,7 +4,7 @@
  */
 package Application.salesFolder;
 
-import Application.profileController;
+import Application.shared.profileController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

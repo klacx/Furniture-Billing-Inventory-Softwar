@@ -4,6 +4,7 @@
  */
 package Application;
 
+import Application.shared.profileController;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;

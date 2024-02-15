@@ -4,7 +4,7 @@
  */
 package Application.salesFolder;
 
-import Application.profileController;
+import Application.shared.profileController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

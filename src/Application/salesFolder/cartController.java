@@ -17,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -131,6 +132,7 @@ public class cartController {
         customerNameField.clear();
         customerNumberField.clear();
         orderNumberField.setText(String.valueOf(getOrderId()));
+        updateSaveButton();
     }
     
     @FXML
@@ -231,6 +233,7 @@ public class cartController {
                         deleteIcon.setOnMouseClicked(event -> {
                             orderDetailsInfo rowData = getTableRow().getItem();
                             String productID = rowData.getProductID();
+                                
                             handleDeleteAction(username, productID);
                         });
                     }
@@ -249,9 +252,15 @@ public class cartController {
         };
     }
     
-    private void handleDeleteAction(String salesID, String productID) {
-        deleteCartItem(salesID, productID);
-        populateCartTable();
+    private void handleDeleteAction(String salesID,String productID) {
+        if(!edit_mode){
+            deleteCartItem(salesID, productID);
+            populateCartTable();
+        }
+        else{
+            deleteTmpCartItem(orderNumberField.getText(), productID);
+            populateOrderDetailsTable();
+        }
     }
     
     private void deleteCartItem(String salesID, String productID) {   //delete specific item from the cart
@@ -269,6 +278,35 @@ public class cartController {
                 String[] cartInfo = line.split("!");
                 // Check if the line matches the specified productID and salesID
                 if (!(cartInfo[0].equals(salesID) && cartInfo[1].equals(productID))) {
+                    // If it doesn't match, add it to the updated lines
+                    updatedLines.add(line);
+                }
+            }
+
+            // Write the updated lines back to the file
+            Files.write(file.toPath(), updatedLines, StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            System.err.println("Error deleting line: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    private void deleteTmpCartItem(String orderNumber, String productID) {   //delete specific item from the cart
+        String currentWorkingDirectory = System.getProperty("user.dir");
+        String filePath = currentWorkingDirectory + "/tmp_cart.txt";
+        try {
+            File file = new File(filePath);
+            List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+
+            // Create a new list to store the updated lines
+            List<String> updatedLines = new ArrayList<>();
+
+            // Iterate over each line
+            for (String line : lines) {
+                String[] cartInfo = line.split("!");
+                // Check if the line matches the specified productID and salesID
+                if (!(cartInfo[1].equals(orderNumber) && cartInfo[2].equals(productID))) {
                     // If it doesn't match, add it to the updated lines
                     updatedLines.add(line);
                 }
@@ -343,7 +381,7 @@ public class cartController {
                     // Update the total amount
                     
                     // Construct the updated line
-                    String updatedLine = String.join("!", orderInfo[0], totalAmountText.getText() , orderInfo[2], orderInfo[3], customerNameField.getText() , customerNumberField.getText(), orderInfo[6], orderInfo[7]);
+                    String updatedLine = String.join("!", orderInfo[0], totalAmountText.getText() , orderInfo[2], "Progressing", customerNameField.getText() , customerNumberField.getText(), orderInfo[6], "unapproved");
                     // Replace the line at index i
                     lines.set(i, updatedLine);
                     Files.write(file.toPath(), lines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
@@ -393,10 +431,10 @@ public class cartController {
         }
     }
     
-    private void addOrderDetails() {            //update or add orderDetails to txt
+    private void addOrderDetails() {
         String currentWorkingDirectory = System.getProperty("user.dir");
         String filePath = currentWorkingDirectory + "/orderDetails.txt";
-        try {           
+        try {
             System.out.println(table.getItems().size());
             for (orderDetailsInfo item : table.getItems()) {
                 // Get data from the current row
@@ -406,31 +444,31 @@ public class cartController {
                 String quantity = item.getquantity();
                 String amount = item.getAmount();
                 String description = item.getDescription();
-                
+
                 File file = new File(filePath);
 
                 List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
 
-                for (int i = 0; i < lines.size(); i++) {
-                    String line = lines.get(i);
-                    String[] orderDetailsInfo = line.split("!");                
-                    // Check if the orderDetailsId and product id match with the new variables
-                    if (orderDetailsInfo[1].equals(orderId) && orderDetailsInfo[2].equals(productId)) {
-                        
-                        // Construct the updated line
-                        String updatedLine = String.join("!", orderDetailsInfo[0], orderDetailsInfo[1], orderDetailsInfo[2], price, quantity, amount, description);
-                        // Replace the line at index i
-                        lines.set(i, updatedLine);
-                        Files.write(file.toPath(), lines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);                        
-                    }
+                if (edit_mode) {
+                    // Remove all lines with matching order ID
+                    lines.removeIf(line -> {
+                        String[] orderDetailsInfo = line.split("!");
+                        return orderDetailsInfo.length >= 2 && orderDetailsInfo[1].equals(orderId);
+                    });
+
+                    // Append lines from tmp_cart.txt
+                    String tmpCartFilePath = currentWorkingDirectory + "/tmp_cart.txt";
+                    List<String> tmpCartLines = Files.readAllLines(Paths.get(tmpCartFilePath));
+                    lines.addAll(tmpCartLines);
+                } else {
+                    // If no similar value was found, add the new line
+                    String newLine = String.join("!", String.valueOf(getOrderDetailsId()), orderId, productId, price, quantity, amount, description);
+                    lines.add(newLine);
                 }
 
-                // If no similar value was found, add the new line
-                String newLine = String.join("!", String.valueOf(getOrderDetailsId()), orderId, productId , price , quantity , amount, description);
-                lines.add(newLine);
-                Files.write(file.toPath(), Collections.singletonList(newLine), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+                Files.write(file.toPath(), lines, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
             }
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }

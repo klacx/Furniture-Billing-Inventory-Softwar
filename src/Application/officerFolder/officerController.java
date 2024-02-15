@@ -4,7 +4,7 @@
  */
 package Application.officerFolder;
 
-import Application.profileController;
+import Application.shared.profileController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -72,7 +72,7 @@ public class officerController implements Initializable {
         Btn_status.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: transparent;");
         
-        loadScene("/Application/officerFolder/orderScn.fxml", 2);
+        loadScene("/Application/officerFolder/submitScn.fxml", 2);
     }
     
     @FXML
@@ -124,6 +124,7 @@ public class officerController implements Initializable {
                     profileController.setUsername(username);
                 }
                 case 2 -> {
+                    submitScnController submitScnController = loader.getController();                    
                 }
                 case 3 -> {
                 }
