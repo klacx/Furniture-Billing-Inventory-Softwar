@@ -28,10 +28,7 @@ public class officerController implements Initializable {
     private Button Btn_profile;
     
     @FXML
-    private Button Btn_order;
-    
-    @FXML
-    private Button Btn_invoice;
+    private Button Btn_processSale;
     
     @FXML
     private Button Btn_status;
@@ -56,8 +53,7 @@ public class officerController implements Initializable {
     @FXML
     private void profileBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: #000000;");  // Dark Gray
-        Btn_order.setStyle("-fx-background-color: transparent;");
-        Btn_invoice.setStyle("-fx-background-color: transparent;");
+        Btn_processSale.setStyle("-fx-background-color: transparent;");
         Btn_status.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: transparent;");
         
@@ -65,52 +61,40 @@ public class officerController implements Initializable {
     }
     
     @FXML
-    private void orderBtnPressed() {
+    public void processSaleBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
-        Btn_order.setStyle("-fx-background-color: #000000;");
-        Btn_invoice.setStyle("-fx-background-color: transparent;");
+        Btn_processSale.setStyle("-fx-background-color: #000000;");
         Btn_status.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: transparent;");
         
         loadScene("/Application/officerFolder/submitScn.fxml", 2);
     }
     
-    @FXML
-    private void invoiceBtnPressed() {
-        Btn_profile.setStyle("-fx-background-color: transparent;");
-        Btn_order.setStyle("-fx-background-color: transparen;");
-        Btn_invoice.setStyle("-fx-background-color: #000000;");
-        Btn_status.setStyle("-fx-background-color: transparent;");
-        Btn_report.setStyle("-fx-background-color: transparent;");
-
-        loadScene("/Application/officerFolder/invoiceScn.fxml", 3);
-    }
     
     @FXML
     protected void statusBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
-        Btn_order.setStyle("-fx-background-color: transparent;");
-        Btn_invoice.setStyle("-fx-background-color: transparent;");
+        Btn_processSale.setStyle("-fx-background-color: transparent;");
         Btn_status.setStyle("-fx-background-color: #000000;");
         Btn_report.setStyle("-fx-background-color: transparent;");
         
-        loadScene("/Application/officerFolder/statusScn.fxml", 4);
+        loadScene("/Application/officerFolder/statusScn.fxml", 3);
     }
     
     @FXML
     private void reportBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
-        Btn_order.setStyle("-fx-background-color: transparen;");
-        Btn_invoice.setStyle("-fx-background-color: transparent;");
+        Btn_processSale.setStyle("-fx-background-color: transparen;");
         Btn_status.setStyle("-fx-background-color: transparent;");
         Btn_report.setStyle("-fx-background-color: #000000;");
 
-        loadScene("/Application/shared/reportScn.fxml", 5);
+        loadScene("/Application/shared/reportScn.fxml", 4);
     }
     
     public void setUsername(String username) {
         this.username = username;
         lbl_username.setText("ID:" + username);
+        profileBtnPressed();
     }
     
     private void loadScene(String sceneName, int choice) {
@@ -124,15 +108,15 @@ public class officerController implements Initializable {
                     profileController.setUsername(username);
                 }
                 case 2 -> {
-                    submitScnController submitScnController = loader.getController();                    
+                    processSaleController processSaleController = loader.getController();
+                    processSaleController.setParentController(this);                  
                 }
                 case 3 -> {
-                }
-                case 4 -> {
                     statusController statusController = loader.getController();
                     statusController.setParentController(this);
-                }
-                case 5 -> {
+                }   
+                case 4 -> {
+
                 }
                 default -> {
                 }

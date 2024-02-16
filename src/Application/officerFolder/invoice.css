@@ -1,0 +1,55 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 16, 2024, 4:47:11 AM
+    Author     : User
+*/
+
+.table-view {
+    -fx-background-color: transparent; /* Set text color to transparent */
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}
+
+.table-column .label {
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: transparent;
+}
+
+
+.table-view .arrow {
+    -fx-mark-color: transparent; ;
+}
+
+.table-view .table-cell{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+

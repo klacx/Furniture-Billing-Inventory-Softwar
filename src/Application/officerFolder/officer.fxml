@@ -32,12 +32,7 @@
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>
             </Button>
-            <Button id="Btn_order" fx:id="Btn_order" mnemonicParsing="false" onMousePressed="#orderBtnPressed" prefHeight="52.0" prefWidth="232.0" style="-fx-background-color: transparent;" styleClass="background-image" stylesheets="@officer.css" text="Order" textFill="WHITE">
-               <font>
-                  <Font name="Century Gothic Bold" size="16.0" />
-               </font>
-            </Button>
-            <Button id="Btn_invoice" fx:id="Btn_invoice" mnemonicParsing="false" onMousePressed="#invoiceBtnPressed" prefHeight="52.0" prefWidth="232.0" style="-fx-background-color: transparent;" styleClass="background-image" stylesheets="@officer.css" text="Process Sale" textFill="WHITE">
+            <Button id="Btn_invoice" fx:id="Btn_processSale" mnemonicParsing="false" onAction="#processSaleBtnPressed" prefHeight="52.0" prefWidth="232.0" style="-fx-background-color: transparent;" styleClass="background-image" stylesheets="@officer.css" text="Process Sale" textFill="WHITE">
                <font>
                   <Font name="Century Gothic Bold" size="16.0" />
                </font>

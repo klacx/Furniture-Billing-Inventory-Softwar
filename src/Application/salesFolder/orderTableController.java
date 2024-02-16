@@ -107,14 +107,17 @@ public class orderTableController {
                 String[] values = line.split("!");
                 if (values.length >= 6){
                     // Create Order object from parsed values
-                    orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5], null);
+                    
 
                     String searchText = searchField.getText();
                     if (!searchText.isEmpty() && !values[0].contains(searchText)&& !values[4].contains(searchText) && !values[5].contains(searchText) && !values[2].contains(searchText)) {
                         continue; // Skip this worker if it doesn't match the search text
                     }
                     // Add order to list
-                    orders.add(order);
+                    if(values[7].equals("unapproved")){
+                        orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5], null);
+                        orders.add(order);
+                    }                    
                 }
             }
         } catch (IOException e) {
@@ -204,9 +207,8 @@ public class orderTableController {
             Parent sceneRoot = loader.load();
 
             cartController cartController = loader.getController();
-            cartController.setParentController(this);
-            cartController.setUsername(username);
-            cartController.populateCartTable();
+            cartController.setOrderAsParentController(this);
+            cartController.setUsername(username);  
 
             // Access UI elements after the FXML file is loaded
             Node node = pane;
@@ -225,11 +227,8 @@ public class orderTableController {
             Parent sceneRoot = loader.load();
 
             cartController cartController = loader.getController();
-            cartController.setParentController(this);
-            cartController.setOrderNumber(orderNumber);
-            cartController.setEditMode();
-            cartController.copyOrderDetailsToTmpCart(orderNumber);
-            cartController.populateOrderDetailsTable();
+            cartController.setOrderAsParentController(this);
+            cartController.setMode("edit", orderNumber);
 
             // Access UI elements after the FXML file is loaded
             Node node = pane;

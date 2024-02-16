@@ -1,5 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1056.0" prefWidth="816.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.officerFolder.invoiceController">
+   <children>
+      <TableView id="table" fx:id="table" layoutX="35.0" layoutY="261.0" prefHeight="600.0" prefWidth="747.0" style="-fx-border-color: transparent;" stylesheets="@invoice.css">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="99.0" text="Product ID" />
+          <TableColumn fx:id="descriptionCol" minWidth="0.0" prefWidth="344.0" text="Particulars" />
+            <TableColumn fx:id="unitPriceCol" minWidth="0.0" prefWidth="100.0" style="-fx-alignment: center;" text="Unit Price" />
+            <TableColumn fx:id="quantityCol" minWidth="0.0" prefWidth="100.0" style="-fx-alignment: center;" text="Quantity" />
+            <TableColumn fx:id="amountCol" minWidth="0.0" prefWidth="100.0" style="-fx-alignment: center;" text="Total" />
+        </columns>
+      </TableView>
+      <Text layoutX="297.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOYO-FURNITURE">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="297.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jalan Teknologi 23, Taman Teknologi Malaysia, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur" textAlignment="CENTER" wrappingWidth="222.66796875">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Text>
+      <Line endX="649.0" endY="-6.0" layoutX="132.0" layoutY="161.0" startX="-96.5" startY="-6.0" />
+      <Text layoutX="359.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel: 03-8996 6969">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="664.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I N V O I C E">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="582.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invoice No.">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="582.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="582.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salesman:">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="665.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="665.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="665.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="orderNumberField" layoutX="664.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InvoiceNumber" textAlignment="RIGHT" wrappingWidth="117.79296875">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="dateField" layoutX="682.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00/00/0000" textAlignment="RIGHT" wrappingWidth="98.091796875">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="salesField" layoutX="682.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0000" textAlignment="RIGHT" wrappingWidth="98.091796875">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Text>
+      <Line endX="649.0" endY="-6.0" layoutX="132.0" layoutY="267.0" startX="-96.5" startY="-6.0" />
+      <Text fx:id="customerNameField" layoutX="35.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CustomerName" wrappingWidth="286.421875">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="35.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel:">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="customerNumberField" layoutX="65.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CustomerNumber" wrappingWidth="160.421875">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Text>
+      <Line endX="649.0" endY="-6.0" layoutX="132.0" layoutY="867.0" startX="-96.5" startY="-6.0" />
+      <Line endX="649.0" endY="-6.0" layoutX="132.0" layoutY="900.0" startX="-96.5" startY="-6.0" />
+      <Line endX="161.0" endY="-6.0" layoutX="132.0" layoutY="1029.0" startX="-96.5" startY="-6.0" />
+      <Line endX="161.0" endY="-6.0" layoutX="620.0" layoutY="1029.0" startX="-96.5" startY="-6.0" />
+      <Text layoutX="35.0" layoutY="916.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Received the above in good order and condition," wrappingWidth="125.66796875">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="639.0" layoutY="916.0" strokeType="OUTSIDE" strokeWidth="0.0" text="for YOYO-FURNITURE," textAlignment="RIGHT" wrappingWidth="141.66796875">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="373.0" layoutY="1024.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E. &amp; O.E." textAlignment="CENTER" wrappingWidth="70.2265625">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Text>
+      <Line endX="649.0" endY="-6.0" layoutX="132.0" layoutY="295.0" startX="-96.5" startY="-6.0" />
+      <Text layoutX="35.0" layoutY="882.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GRAND TOTAL (RM)" wrappingWidth="286.421875">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="totalAmountField" layoutX="496.0" layoutY="882.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RM 0.00" textAlignment="RIGHT" wrappingWidth="286.421875">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

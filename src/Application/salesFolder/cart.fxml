@@ -82,22 +82,27 @@
             </Text>
          </children>
       </Pane>
-      <Button id="Btn_print" fx:id="Btn_print" layoutX="868.0" layoutY="41.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Print" textFill="WHITE" visible="false">
+      <Button id="Btn_print" fx:id="Btn_print" layoutX="868.0" layoutY="41.0" mnemonicParsing="false" onAction="#printBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Print" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_approve" fx:id="Btn_approve" layoutX="457.0" layoutY="706.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Approve" textFill="WHITE" visible="false">
+      <Button id="Btn_approve" fx:id="Btn_approve" layoutX="457.0" layoutY="706.0" mnemonicParsing="false" onAction="#approveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Approve" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_edit" fx:id="Btn_edit" layoutX="361.0" layoutY="706.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Edit" textFill="WHITE" visible="false">
+      <Button id="Btn_edit" fx:id="Btn_edit" layoutX="361.0" layoutY="706.0" mnemonicParsing="false" onAction="#editBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Edit" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_done" fx:id="Btn_done" layoutX="534.0" layoutY="706.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Done" textAlignment="CENTER" textFill="WHITE" visible="false">
+      <Button id="Btn_done" fx:id="Btn_done" layoutX="534.0" layoutY="706.0" mnemonicParsing="false" onAction="#doneBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" text="Done" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Century Gothic Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="Btn_back" fx:id="Btn_back" layoutX="998.0" layoutY="-4.0" mnemonicParsing="false" onMousePressed="#backBtnPressed" prefHeight="48.0" prefWidth="48.0" styleClass="background-image" stylesheets="@../officerFolder/officer.css" textFill="WHITE">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>

@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class salesController implements Initializable {
@@ -79,6 +78,7 @@ public class salesController implements Initializable {
     public void setUsername(String username) {
         this.username = username;
         lbl_username.setText("ID:" + username);
+        profileBtnPressed();
     }
     
     private void loadScene(String sceneName, int choice) {

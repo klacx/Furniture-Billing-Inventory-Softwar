@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.officerFolder.submitScnController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1043.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.officerFolder.processSaleController">
    <children>
       <HBox layoutX="41.0" layoutY="41.0" prefHeight="40.0" prefWidth="343.0">
          <children>
@@ -39,17 +39,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button id="Btn_approve" fx:id="Btn_approve" disable="true" layoutX="361.0" layoutY="716.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@officer.css" text="Approve" textFill="WHITE">
+      <Button id="Btn_approve" fx:id="Btn_approve" disable="true" layoutX="361.0" layoutY="716.0" mnemonicParsing="false" onAction="#approveBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@officer.css" text="Approve" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_done" fx:id="Btn_done" disable="true" layoutX="534.0" layoutY="716.0" mnemonicParsing="false" onAction="#doneBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@officer.css" text="Done" textAlignment="CENTER" textFill="WHITE">
+      <Button id="Btn_done" fx:id="Btn_done" disable="true" layoutX="534.0" layoutY="716.0" mnemonicParsing="false" onAction="#doneBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@officer.css" text="Done" textAlignment="CENTER" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
       </Button>
-      <Button id="Btn_print" fx:id="Btn_print" layoutX="456.0" layoutY="716.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@officer.css" text="Print" textFill="WHITE" visible="false">
+      <Button id="Btn_print" fx:id="Btn_print" layoutX="456.0" layoutY="716.0" mnemonicParsing="false" onAction="#printBtnPressed" prefHeight="40.0" prefWidth="130.0" styleClass="background-image" stylesheets="@officer.css" text="Print" textFill="WHITE" visible="false">
          <font>
             <Font name="Century Gothic Bold" size="16.0" />
          </font>
