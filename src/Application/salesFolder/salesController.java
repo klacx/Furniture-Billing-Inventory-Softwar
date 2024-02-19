@@ -5,6 +5,7 @@
 package Application.salesFolder;
 
 import Application.shared.profileController;
+import Application.shared.sceneController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,12 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class salesController implements Initializable {
-    
-    private String username;
-    
-    @FXML
-    private Button Btn_profile;
+public class salesController extends sceneController implements Initializable {
     
     @FXML
     private Button Btn_order;
@@ -29,23 +25,10 @@ public class salesController implements Initializable {
     @FXML
     private Button Btn_history;
     
-    @FXML
-    private Label lbl_username;
-    
-    @FXML
-    private Pane pane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialization code, if any
-    }
-
-    protected void orderScn() {
-        Btn_profile.setStyle("-fx-background-color: transparent;");
-        Btn_order.setStyle("-fx-background-color: #000000;");
-        Btn_history.setStyle("-fx-background-color: transparent;");
-        
-        loadScene("/Application/salesFolder/orderScn.fxml",2);
     }
     
     @FXML
@@ -58,7 +41,7 @@ public class salesController implements Initializable {
     }
     
     @FXML
-    private void orderBtnPressed() {
+    protected void orderBtnPressed() {
         Btn_profile.setStyle("-fx-background-color: transparent;");
         Btn_order.setStyle("-fx-background-color: #000000;");
         Btn_history.setStyle("-fx-background-color: transparent;");
@@ -73,12 +56,6 @@ public class salesController implements Initializable {
         Btn_history.setStyle("-fx-background-color: #000000;");
         
         loadScene("/Application/salesFolder/historyScn.fxml",3);
-    }
-    
-    public void setUsername(String username) {
-        this.username = username;
-        lbl_username.setText("ID:" + username);
-        profileBtnPressed();
     }
     
     private void loadScene(String sceneName, int choice) {

@@ -847,7 +847,5 @@ public class cartController {
                 textField.setText(oldValue);
             }
         });
-    }
-    
-    
+    }   
 }

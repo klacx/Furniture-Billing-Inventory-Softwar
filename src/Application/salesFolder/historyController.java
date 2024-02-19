@@ -4,16 +4,13 @@
  */
 package Application.salesFolder;
 
-import Application.shared.viewOrderController;
+import Application.shared.viewerController;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -25,7 +22,7 @@ import javafx.scene.layout.Pane;
  *
  * @author User
  */
-public class historyController {
+public class historyController extends viewerController {
     
     @FXML
     private TableColumn<orderInfo, String> amountCol;
@@ -115,7 +112,7 @@ public class historyController {
                     if (rowData != null) {
                         String orderNumber = rowData.getOrderNumber();
                         // Handle double-click event here
-                        handleRowDoubleClick(orderNumber);
+                        handleRowDoubleClick(orderNumber, this, pane);
                     }
                 }
             });
@@ -133,30 +130,5 @@ public class historyController {
         contactNumberCol.setCellValueFactory(cellData -> cellData.getValue().contactNumberProperty());
         approvalCol.setCellValueFactory(cellData -> cellData.getValue().approvalProperty());
         populateTable();
-    }
-
-    private void handleRowDoubleClick(String orderNumber) {
-        loadOrder(orderNumber);
-    }
-    
-    private void loadOrder(String orderNumber) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/shared/viewOrder.fxml"));
-            Parent sceneRoot = loader.load();
-
-            viewOrderController viewOrderController = loader.getController();
-            viewOrderController.setHistoryAsParentController(this);
-            viewOrderController.setOrderNumber(orderNumber);
-            viewOrderController.populateTable();
-            
-            // Access UI elements after the FXML file is loaded
-            Node node = pane;
-            Pane parent = (Pane) node.getParent();
-            parent.getChildren().clear();
-            parent.getChildren().add(sceneRoot);
-        } catch (IOException e) {
-            System.err.println("Error loading scene FXML: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 }

@@ -24,8 +24,6 @@ import javafx.print.PageOrientation;
 import javafx.print.Paper;
 import javafx.print.Printer;
 import javafx.print.PrinterJob;
-import javafx.print.PrinterJob.JobStatus;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

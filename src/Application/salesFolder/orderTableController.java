@@ -4,13 +4,11 @@
  */
 package Application.salesFolder;
 
-import Application.shared.profileController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -31,7 +29,6 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -115,7 +112,7 @@ public class orderTableController {
                     }
                     // Add order to list
                     if(values[7].equals("unapproved")){
-                        orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5], null);
+                        orderInfo order = new orderInfo(values[0], values[1], values[2], values[3], values[4], values[5]);
                         orders.add(order);
                     }                    
                 }
@@ -197,7 +194,7 @@ public class orderTableController {
     
     protected void callParentFunction(){
         if (parentController != null) {
-            parentController.orderScn(); // Call the function from adminController
+            parentController.orderBtnPressed(); // Call the function from adminController
         }
     }
     

@@ -14,7 +14,7 @@ public class orderInfo {
     private final StringProperty status;
     private final StringProperty customerName;
     private final StringProperty contactNumber;
-    private final StringProperty approval;
+    private StringProperty approval;
 
     public orderInfo(String orderNumber, String amount, String date, String status, String customerName, String contactNumber, String approval) {
         this.orderNumber = new SimpleStringProperty(orderNumber);
@@ -24,6 +24,15 @@ public class orderInfo {
         this.customerName = new SimpleStringProperty(customerName);
         this.contactNumber = new SimpleStringProperty(contactNumber);
         this.approval = new SimpleStringProperty(approval);
+    }
+    
+    public orderInfo(String orderNumber, String amount, String date, String status, String customerName, String contactNumber) {
+        this.orderNumber = new SimpleStringProperty(orderNumber);
+        this.amount = new SimpleStringProperty(amount);
+        this.date = new SimpleStringProperty(date);
+        this.status = new SimpleStringProperty(status);
+        this.customerName = new SimpleStringProperty(customerName);
+        this.contactNumber = new SimpleStringProperty(contactNumber);
     }
 
     public StringProperty orderNumberProperty() {

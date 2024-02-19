@@ -21,17 +21,17 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ProgressBar>
-            <Text fx:id="approveText" layoutX="33.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="95%" textAlignment="RIGHT">
+            <Text fx:id="approveText" layoutX="20.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100%" textAlignment="RIGHT" wrappingWidth="175.01611328125">
                <font>
                   <Font name="Poor Richard" size="71.0" />
                </font>
             </Text>
-            <Text layoutX="190.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approved">
+            <Text layoutX="193.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approved">
                <font>
                   <Font name="Century Gothic" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="190.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order">
+            <Text layoutX="193.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order">
                <font>
                   <Font name="Century Gothic" size="24.0" />
                </font>
@@ -49,17 +49,17 @@
                   <String fx:value="statusBar" />
                </styleClass>
             </ProgressBar>
-            <Text fx:id="statusText" layoutX="33.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%" textAlignment="RIGHT">
+            <Text fx:id="statusText" layoutX="20.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%" textAlignment="RIGHT" wrappingWidth="175.01611328125">
                <font>
                   <Font name="Poor Richard" size="71.0" />
                </font>
             </Text>
-            <Text layoutX="190.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Done">
+            <Text layoutX="194.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Done">
                <font>
                   <Font name="Century Gothic" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="190.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order">
+            <Text layoutX="193.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order">
                <font>
                   <Font name="Century Gothic" size="24.0" />
                </font>

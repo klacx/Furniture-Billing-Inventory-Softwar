@@ -6,6 +6,7 @@ package Application.officerFolder;
 
 import Application.salesFolder.orderInfo;
 import Application.shared.viewOrderController;
+import Application.shared.viewerController;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,7 +28,8 @@ import javafx.scene.layout.Pane;
  *
  * @author User
  */
-public class statusController {
+
+public class statusController extends viewerController{
     
     @FXML
     private TableColumn<orderInfo, String> amountCol;
@@ -130,35 +132,10 @@ public class statusController {
                     orderInfo rowData = row.getItem(); // Corrected to access the item from the row
                     String orderNumber = rowData.getOrderNumber();
                     // Handle double-click event here
-                    handleRowDoubleClick(orderNumber);
+                    handleRowDoubleClick(orderNumber, this, pane);
                 }
             });
             return row;
         });
-    }
-    
-    private void handleRowDoubleClick(String orderNumber) {
-        loadOrder(orderNumber);
-    }
-    
-    private void loadOrder(String orderNumber) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/shared/viewOrder.fxml"));
-            Parent sceneRoot = loader.load();
-
-            viewOrderController viewOrderController = loader.getController();
-            viewOrderController.setStatusAsParentController(this);
-            viewOrderController.setOrderNumber(orderNumber);
-            viewOrderController.populateTable();
-
-            // Access UI elements after the FXML file is loaded
-            Node node = pane;
-            Pane parent = (Pane) node.getParent();
-            parent.getChildren().clear();
-            parent.getChildren().add(sceneRoot);
-        } catch (IOException e) {
-            System.err.println("Error loading scene FXML: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 }
